@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Bella Yu | Portfolio</title>
+
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&display=swap" rel="stylesheet">
+  <link rel="icon" href="favicon.png" type="image/png" />
+
+  <style>
+    :root {
+      --bg: #faf7ff;
+      --fg: #2b2340;
+      --muted: rgba(43,35,64,.72);
+      --glass: rgba(255,255,255,.7);
+      --glass-border: rgba(137,112,173,.25);
+      --accent1:#c7aef5;
+      --accent2:#f5b2e2;
+      --chip:#f6efff;
+      --shadow: 0 12px 30px rgba(161,128,221,.15);
+      --radius: 18px;
+    }
+    * { box-sizing:border-box }
+    html,body { height:100% }
+    body {
+      margin:0; color:var(--fg);
+      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      background:
+        radial-gradient(80% 60% at 50% 0%, rgba(199,174,245,.35) 0%, rgba(245,178,226,.28) 45%, rgba(250,247,255,0) 100%),
+        linear-gradient(180deg, #fff 0%, #f7f2ff 100%);
+    }
+    a { color:inherit; text-decoration:none }
+    .container { max-width:1100px; margin:0 auto; padding:20px }
+
+    .nav { position:sticky; top:0; backdrop-filter:blur(10px);
+      background:linear-gradient(to bottom, rgba(255,255,255,.8), rgba(255,255,255,.5));
+      border-bottom:1px solid var(--glass-border); z-index:10; }
+    .nav-inner { display:flex; align-items:center; justify-content:space-between; padding:12px 20px }
+    .chip { display:inline-flex; gap:8px; align-items:center; padding:8px 12px; border-radius:999px; background:var(--chip); border:1px solid var(--glass-border) }
+    .menu a { opacity:.85; margin-left:16px }
+    .menu a:hover { opacity:1 }
+
+    .grid { display:grid; gap:20px }
+    @media(min-width:900px){ .grid-2 { grid-template-columns:2fr 1fr } }
+    @media(min-width:900px){ .grid-3 { grid-template-columns:repeat(3,1fr) } }
+
+    .card { background:var(--glass); border:1px solid var(--glass-border);
+      border-radius:var(--radius); box-shadow:var(--shadow) }
+    .p-16{padding:16px} .p-20{padding:20px} .p-24{padding:24px}
+    .section{padding:40px 20px}
+    .title{font-size:28px;font-weight:800;margin:0 0 8px}
+    .subtitle{color:var(--muted);margin:0 0 12px}
+    .btn{display:inline-flex;align-items:center;gap:10px;padding:10px 14px;border-radius:14px;
+      border:1px solid var(--glass-border);background:#fff;color:var(--fg);cursor:pointer;font-weight:700;
+      box-shadow:0 6px 18px rgba(199,174,245,.25)}
+    .btn.alt{background:transparent}
+    .btn:hover{transform:translateY(-1px)}
+    .row{display:flex;flex-wrap:wrap;gap:10px}
+
+    .hero h1{font-size:42px;line-height:1.05;margin:0}
+    .muted{color:var(--muted)}
+    .badge{display:inline-block;background:linear-gradient(90deg,var(--accent1),var(--accent2));
+      color:#4a2d61;font-weight:800;padding:6px 10px;border-radius:999px}
+
+    .list{list-style:none;margin:0;padding-left:0}
+    .list li{padding-left:0.4rem;position:relative}
+    .list li::before{content:"•";color:#b483ff;margin-right:8px}
+
+    /* Spotlight gallery */
+    .gallery{display:grid;gap:16px}
+    @media(min-width:700px){.gallery{grid-template-columns:repeat(3,1fr)}}
+    .imgwrap{position:relative;overflow:hidden;border-radius:16px;border:1px solid var(--glass-border);background:#f7f0ff}
+    .imgwrap img{width:100%;height:220px;object-fit:cover;display:block;transition:transform .5s}
+    .imgwrap:hover img{transform:scale(1.04)}
+    .caption{position:absolute;left:10px;bottom:10px;background:rgba(255,255,255,.8);color:#3b2a55;
+      padding:6px 10px;border-radius:12px;font-size:12px;font-weight:700}
+
+    /* Lightbox */
+    .lightbox{position:fixed;inset:0;background:rgba(0,0,0,.75);display:none;align-items:center;justify-content:center;z-index:50}
+    .lightbox.open{display:flex}
+    .lightbox img{max-width:90vw;max-height:85vh;border-radius:12px;box-shadow:0 20px 60px rgba(0,0,0,.5)}
+    .lightbox .close{position:absolute;top:18px;right:24px;background:#fff;border:none;border-radius:999px;
+      padding:8px 12px;font-weight:800;cursor:pointer}
+
+    .pill{display:inline-flex;align-items:center;gap:8px;padding:6px 10px;border-radius:999px;background:#fff;border:1px solid var(--glass-border)}
+    footer{border-top:1px solid var(--glass-border);padding:18px 20px;color:var(--muted);font-size:13px}
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <div class="nav">
+    <div class="container nav-inner">
+      <div class="chip"><span>💜</span><strong>Bella Yu</strong></div>
+      <div class="menu">
+        <a href="#experience">Experience</a>
+        <a href="#awards">Awards</a>
+        <a href="#spotlight">Spotlight</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </div>
+
+  <main class="container">
+
+    <!-- HERO -->
+    <section class="section hero grid grid-2">
+      <div class="card p-24">
+        <span class="badge">AI • AR/VR • Product Growth</span>
+        <h1 style="margin-top:12px">Bella Yu</h1>
+        <p class="muted" style="margin-top:8px">
+          Product Manager crafting AI-powered, human-centered products — from incubations to scaled launches.
+        </p>
+        <div class="row" style="margin-top:16px">
+          <a class="btn" href="mailto:bellayu1600@gmail.com">Email</a>
+          <a class="btn alt" href="https://www.linkedin.com/in/" target="_blank">LinkedIn</a>
+          <a class="btn alt" href="https://github.com/bellayu17" target="_blank">GitHub</a>
+        </div>
+        <div class="row" style="margin-top:14px">
+          <span class="pill">📍 Los Angeles, CA</span>
+          <span class="pill">Open to RPM/PM • 2026</span>
+        </div>
+      </div>
+
+      <div class="card p-24">
+        <h3 class="title" style="font-size:20px">About</h3>
+        <p class="muted">
+          I bring interdisciplinary insight, founder-level boldness, and the spark to amplify products — blending AI, AR/VR, and storytelling to ship distinctive experiences.
+        </p>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section id="experience" class="section">
+      <h2 class="title">Experience</h2>
+      <p class="subtitle">Selected impact</p>
+
+      <div class="grid grid-2">
+        <div class="card p-20">
+          <h3 style="margin:0">FOX (News & Sports) — PM Intern</h3>
+          <p class="muted" style="margin:6px 0 10px">AI Personalization & AdTech · 2025</p>
+          <ul class="list">
+            <li>Led GenAI personalization beta for FOX News; addressed multigenerational engagement.</li>
+            <li>Spearheaded YOLO model for real-time ad optimization; 96% score-point detection.</li>
+          </ul>
+        </div>
+
+        <div class="card p-20">
+          <h3 style="margin:0">Genentech — PM (AR/AI Digitization)</h3>
+          <p class="muted" style="margin:6px 0 10px">2024</p>
+          <ul class="list">
+            <li>Shipped 3D digital twin for manufacturing; achieved 100% digitization in 3 months.</li>
+            <li>MVP featured to 600+ dept; recognized by C-suite; company-wide newsletter highlight.</li>
+          </ul>
+        </div>
+
+        <div class="card p-20">
+          <h3 style="margin:0">Clientloop — Founder/CEO</h3>
+          <p class="muted" style="margin:6px 0 10px">AI Outreach Agent · NSF I-Corps · 2023–25</p>
+          <ul class="list">
+            <li>Piloted MVPs at UCLA, CMU, startups & agencies; 29.35% conversion (~+15% vs competitors).</li>
+            <li>Designed & ran user research + A/B testing to boost activation & adoption.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- AWARDS -->
+    <section id="awards" class="section">
+      <h2 class="title">Awards & Recognition</h2>
+      <div class="grid grid-3">
+        <div class="card p-16">
+          <strong>Winner — Knapp Venture Competition (UCLA Anderson)</strong>
+          <p class="muted">First undergraduate to beat MBA teams</p>
+        </div>
+        <div class="card p-16">
+          <strong>U.S. Patent (Provisional #63/761,586)</strong>
+          <p class="muted">Innovation in AI/biomaterials</p>
+        </div>
+        <div class="card p-16">
+          <strong>Top 6 — Women Founders Network</strong>
+          <p class="muted">National finalist</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SPOTLIGHT -->
+    <section id="spotlight" class="section">
+      <h2 class="title">Featured Spotlight</h2>
+      <p class="subtitle">Images stored in <code>assets/spotlight/</code></p>
+      <div class="gallery" id="gallery"></div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="section">
+      <div class="card p-24">
+        <h2 class="title">Let’s build something meaningful.</h2>
+        <p class="subtitle">Open to RPM/PM roles and collaborations in AI, AR/VR, and growth.</p>
+        <div class="row" style="margin-top:10px">
+          <a class="btn" href="mailto:bellayu1600@gmail.com">Email</a>
+          <a class="btn alt" href="https://www.linkedin.com/in/" target="_blank">LinkedIn</a>
+          <a class="btn alt" href="https://github.com/bellayu17" target="_blank">GitHub</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="container" style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap">
+      <span>© <span id="year"></span> Bella Yu</span>
+      <span>Built with HTML • CSS • JS</span>
+    </div>
+  </footer>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox">
+    <button class="close" id="lb-close">✕</button>
+    <img id="lb-img" alt="Spotlight"/>
+  </div>
+
+  <script>
+  const SPOTLIGHT_BASE = "assets/spotlight/";
+  const SPOTLIGHT = [
+    { file: "yc-conference.jpg", title: "YC Conference" },
+    { file: "with garry.png", title: "With Garry Tan" },
+    { file: "YC investor meetup.png", title: "YC Investor Meetup" },
+    { file: "entrepreneurship comp.png", title: "Entrepreneurship Competition" },
+    { file: "shark tank.png", title: "Shark Tank Casting" },
+    { file: "Fox intern spotlight.JPG", title: "FOX Intern Spotlight" }
+  ];
+
+  const gallery = document.getElementById('gallery');
+
+  function addCard(src, title) {
+    const wrap = document.createElement('figure');
+    wrap.className = 'imgwrap';
+    const img = document.createElement('img');
+    img.src = src;
+    img.alt = title || 'Featured';
+    img.loading = 'lazy';
+    img.onerror = () => {
+      console.error("Image failed to load:", src);
+      img.remove(); // remove broken img
+      const ph = document.createElement('div');
+      ph.style.height = '220px';
+      ph.style.display = 'grid';
+      ph.style.placeItems = 'center';
+      ph.style.background = '#f3eaff';
+      ph.style.color = '#7b5fb4';
+      ph.textContent = 'Image not found';
+      wrap.prepend(ph);
+    };
+    const cap = document.createElement('figcaption');
+    cap.className = 'caption';
+    cap.textContent = title || 'Featured';
+    wrap.appendChild(img);
+    wrap.appendChild(cap);
+    wrap.addEventListener('click', () => openLightbox(src, title));
+    gallery.appendChild(wrap);
+  }
+
+  SPOTLIGHT.forEach(i => addCard(SPOTLIGHT_BASE + i.file, i.title));
+
+  // Lightbox (unchanged)
+  const lb = document.getElementById('lightbox');
+  const lbImg = document.getElementById('lb-img');
+  const lbClose = document.getElementById('lb-close');
+  function openLightbox(src, alt){ lbImg.src = src; lbImg.alt = alt || 'Spotlight'; lb.classList.add('open'); }
+  lbClose.addEventListener('click', ()=> lb.classList.remove('open'));
+  lb.addEventListener('click', (e)=> { if(e.target === lb) lb.classList.remove('open'); });
+  document.addEventListener('keydown', (e)=> { if(e.key === 'Escape') lb.classList.remove('open'); });
+</script>
+
+</body>
+</html>
