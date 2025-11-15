@@ -1,277 +1,777 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Bella Yu | Portfolio</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Bella Yu | Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:white;
+    --fg:#2b2340;
+    --muted:rgba(43,35,64,.66);
+    --accent1:#aee0b4; /* soft minty green */
+    --accent2:#e7f8e3;
+    --arrow-bg: rgba(43,35,64,.06);
+    --arrow-accent: rgba(53,122,56,.95);
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0;
+    font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+    color:var(--fg);
+    background:var(--bg);
+    scroll-behavior: smooth;
+  }
 
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&display=swap" rel="stylesheet">
-  <link rel="icon" href="favicon.png" type="image/png" />
+  /* ---------- HERO (same as before) ---------- */
+  .hero{text-align:center;padding:100px 20px 120px;position:relative;}
+  h1{
+    font-size:48px;margin:0;font-weight:800;letter-spacing:-0.5px;
+    opacity:0;transform:translateY(14px);
+    transition:opacity .55s ease,transform .55s cubic-bezier(.2,.9,.2,1);
+  }
+  h1.in{opacity:1;transform:translateY(0);}
+  p.lead{
+    margin:20px 0 0;font-weight:600;font-size:20px;color:var(--muted);
+    opacity:0;transform:translateY(10px);
+    transition:opacity .55s ease .08s,transform .55s cubic-bezier(.2,.9,.2,1) .08s;
+  }
+  p.lead.in{opacity:1;transform:translateY(0);}
+  .hero-row{
+    display:flex;justify-content:center;align-items:center;margin:50px auto 30px;
+    gap:0;position:relative;flex-wrap:nowrap;max-width:1200px;
+  }
+  .hero-card{
+    width:320px;height:200px;border-radius:18px;overflow:hidden;background:#fff;
+    box-shadow:0 14px 40px rgba(33,18,8,.08);border:1px solid rgba(0,0,0,.05);
+    transition:transform .4s ease,box-shadow .4s ease;cursor:pointer;position:relative;
+    margin-left:-50px;opacity:0;
+  }
+  .hero-card:first-child{margin-left:0;}
+  .hero-card img{
+    width:100%;height:100%;object-fit:cover;display:block;
+    transition:transform .45s ease;transform:translateY(18px) scale(.98);
+  }
+  .hero-card.in{opacity:1;}
+  .hero-card.in img{transform:translateY(0) scale(1);}
+  .hero-card:nth-child(1){transform:rotate(-3deg);z-index:1;}
+  .hero-card:nth-child(2){transform:rotate(2deg);z-index:2;}
+  .hero-card:nth-child(3){transform:rotate(-2deg);z-index:3;}
+  .hero-card:nth-child(4){transform:rotate(3deg);z-index:4;}
+  .hero-card:hover{transform:rotate(0deg) translateY(-10px) scale(1.05);
+    box-shadow:0 30px 70px rgba(33,18,8,.12);z-index:10;}
+  .hero-card:hover img{transform:scale(1.05);}
 
-  <style>
-    :root {
-      --bg: #faf7ff;
-      --fg: #2b2340;
-      --muted: rgba(43,35,64,.72);
-      --glass: rgba(255,255,255,.7);
-      --glass-border: rgba(137,112,173,.25);
-      --accent1:#c7aef5;
-      --accent2:#f5b2e2;
-      --chip:#f6efff;
-      --shadow: 0 12px 30px rgba(161,128,221,.15);
-      --radius: 18px;
-    }
-    * { box-sizing:border-box }
-    html,body { height:100% }
-    body {
-      margin:0; color:var(--fg);
-      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
-      background:
-        radial-gradient(80% 60% at 50% 0%, rgba(199,174,245,.35) 0%, rgba(245,178,226,.28) 45%, rgba(250,247,255,0) 100%),
-        linear-gradient(180deg, #fff 0%, #f7f2ff 100%);
-    }
-    a { color:inherit; text-decoration:none }
-    .container { max-width:1100px; margin:0 auto; padding:20px }
+  /* ---------- PRODUCT CONCEPT ---------- */
+  .product-concept{
+    position:relative;max-width:1100px;margin:80px auto;padding:60px 40px;
+    display:grid;grid-template-columns:360px 1fr;gap:48px;align-items:center;
+    border-radius:24px;overflow:hidden;
+  }
+  .product-concept::before{
+    content:"";position:absolute;inset:0;
+    background:radial-gradient(circle at 30% 40%, rgba(174,224,180,.25), rgba(231,248,227,.45) 60%, transparent 100%);
+    z-index:-1;
+  }
+  .pc-photo{
+    width:100%;max-width:360px;border-radius:14px;overflow:hidden;
+    box-shadow:0 18px 54px rgba(33,18,8,.08);border:1px solid rgba(0,0,0,.04);
+  }
+  .pc-photo img{width:100%;height:100%;object-fit:cover;display:block;}
+  .pc-text{font-family:"Times New Roman",Times,serif;color:var(--fg);font-size:18px;line-height:1.6;}
+  .pc-text p{margin:0 0 14px;}
+  .bubble{
+    display:inline-block;padding:6px 10px;border-radius:999px;
+    border:2px solid rgba(174,224,180,.5);background:rgba(174,224,180,.1);
+    color:var(--fg);font-weight:700;margin:0 6px;line-height:1;
+    transition:transform .18s ease, box-shadow .18s ease;white-space:nowrap;
+  }
+  .bubble:hover{transform:translateY(-3px) scale(1.03);
+    box-shadow:0 10px 30px rgba(174,224,180,.25);}
+  .bubble.small{padding:4px 8px;font-size:16px;}
+  @media(max-width:980px){
+    .product-concept{grid-template-columns:1fr;gap:22px;padding:40px 24px;}
+    .pc-photo{max-width:100%;height:auto;}
+  }
 
-    .nav { position:sticky; top:0; backdrop-filter:blur(10px);
-      background:linear-gradient(to bottom, rgba(255,255,255,.8), rgba(255,255,255,.5));
-      border-bottom:1px solid var(--glass-border); z-index:10; }
-    .nav-inner { display:flex; align-items:center; justify-content:space-between; padding:12px 20px }
-    .chip { display:inline-flex; gap:8px; align-items:center; padding:8px 12px; border-radius:999px; background:var(--chip); border:1px solid var(--glass-border) }
-    .menu a { opacity:.85; margin-left:16px }
-    .menu a:hover { opacity:1 }
+  /* ---------- AS SEEN ON (REPLACED WITH CAROUSEL) ---------- */
+  .as-seen{
+    max-width:1100px;margin:60px auto;padding:36px 20px;text-align:center;
+  }
+  .as-seen h2{font-size:28px;font-weight:800;margin-bottom:18px;}
 
-    .grid { display:grid; gap:20px }
-    @media(min-width:900px){ .grid-2 { grid-template-columns:2fr 1fr } }
-    @media(min-width:900px){ .grid-3 { grid-template-columns:repeat(3,1fr) } }
+  /* wrapper */
+  .seen-wrap{
+    position:relative;
+    overflow:hidden;
+    border-radius:18px;
+    padding:18px 48px 28px;
+    background:linear-gradient(180deg, rgba(174,224,180,.04), rgba(231,248,227,.02));
+    box-shadow:0 12px 36px rgba(33,18,8,.04);
+  }
 
-    .card { background:var(--glass); border:1px solid var(--glass-border);
-      border-radius:var(--radius); box-shadow:var(--shadow) }
-    .p-16{padding:16px} .p-20{padding:20px} .p-24{padding:24px}
-    .section{padding:40px 20px}
-    .title{font-size:28px;font-weight:800;margin:0 0 8px}
-    .subtitle{color:var(--muted);margin:0 0 12px}
-    .btn{display:inline-flex;align-items:center;gap:10px;padding:10px 14px;border-radius:14px;
-      border:1px solid var(--glass-border);background:#fff;color:var(--fg);cursor:pointer;font-weight:700;
-      box-shadow:0 6px 18px rgba(199,174,245,.25)}
-    .btn.alt{background:transparent}
-    .btn:hover{transform:translateY(-1px)}
-    .row{display:flex;flex-wrap:wrap;gap:10px}
+  /* track */
+  .seen-track{
+    display:flex;
+    gap:20px;
+    align-items:center;
+    will-change:transform;
+    scroll-behavior: smooth;
+    padding-bottom:4px;
+    overflow-x:auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .seen-track::-webkit-scrollbar{ display:none; }
 
-    .hero h1{font-size:42px;line-height:1.05;margin:0}
-    .muted{color:var(--muted)}
-    .badge{display:inline-block;background:linear-gradient(90deg,var(--accent1),var(--accent2));
-      color:#4a2d61;font-weight:800;padding:6px 10px;border-radius:999px}
+  /* card sizing */
+  .seen-item{
+    flex:0 0 auto;
+    width:320px;
+    border-radius:12px;
+    overflow:hidden;
+    background:#fff;
+    box-shadow:0 8px 26px rgba(33,18,8,.06);
+    border:1px solid rgba(0,0,0,.04);
+    transition:transform .28s cubic-bezier(.2,.9,.2,1), box-shadow .28s;
+    display:flex;
+    flex-direction:column;
+    text-align:left;
+    cursor:default;
+  }
+  .seen-item:focus-within,
+  .seen-item:hover{ transform:translateY(-6px) scale(1.02); box-shadow:0 30px 70px rgba(33,18,8,.08); }
 
-    .list{list-style:none;margin:0;padding-left:0}
-    .list li{padding-left:0.4rem;position:relative}
-    .list li::before{content:"•";color:#b483ff;margin-right:8px}
+  .seen-item.highlight{
+    border-color:var(--accent1);
+    box-shadow:0 12px 46px rgba(174,224,180,.28);
+    transform-origin:center;
+  }
 
-    /* Spotlight gallery */
-    .gallery{display:grid;gap:16px}
-    @media(min-width:700px){.gallery{grid-template-columns:repeat(3,1fr)}}
-    .imgwrap{position:relative;overflow:hidden;border-radius:16px;border:1px solid var(--glass-border);background:#f7f0ff}
-    .imgwrap img{width:100%;height:220px;object-fit:cover;display:block;transition:transform .5s}
-    .imgwrap:hover img{transform:scale(1.04)}
-    .caption{position:absolute;left:10px;bottom:10px;background:rgba(255,255,255,.8);color:#3b2a55;
-      padding:6px 10px;border-radius:12px;font-size:12px;font-weight:700}
+  .seen-item a{ color:var(--fg); text-decoration:none; display:block; height:100%; }
 
-    /* Lightbox */
-    .lightbox{position:fixed;inset:0;background:rgba(0,0,0,.75);display:none;align-items:center;justify-content:center;z-index:50}
-    .lightbox.open{display:flex}
-    .lightbox img{max-width:90vw;max-height:85vh;border-radius:12px;box-shadow:0 20px 60px rgba(0,0,0,.5)}
-    .lightbox .close{position:absolute;top:18px;right:24px;background:#fff;border:none;border-radius:999px;
-      padding:8px 12px;font-weight:800;cursor:pointer}
+  .seen-media{
+    height:220px;
+    display:block;
+    width:100%;
+    object-fit:cover;
+  }
+  .seen-caption{
+    padding:12px 14px;
+    font-weight:700;
+    font-size:15px;
+    color:var(--fg);
+  }
+  .seen-caption small{ display:block; font-weight:600; font-size:13px; color:var(--muted); margin-top:6px; }
 
-    .pill{display:inline-flex;align-items:center;gap:8px;padding:6px 10px;border-radius:999px;background:#fff;border:1px solid var(--glass-border)}
-    footer{border-top:1px solid var(--glass-border);padding:18px 20px;color:var(--muted);font-size:13px}
-  </style>
+  .seen-patent{
+    display:flex;align-items:center;justify-content:center;height:220px;font-weight:800;font-size:18px;
+    color:var(--fg); text-align:center;padding:12px;
+  }
+
+  .seen-arrow{
+    position:absolute;
+    top:50%;
+    transform:translateY(-50%);
+    width:40px;height:40px;border-radius:999px;
+    display:flex;align-items:center;justify-content:center;
+    background:var(--arrow-bg);border:1px solid rgba(0,0,0,.05);
+    cursor:pointer;transition:transform .18s, background .18s, box-shadow .18s;
+    box-shadow:0 6px 18px rgba(33,18,8,.06);
+    backdrop-filter: blur(6px);
+    z-index:30;
+  }
+  .seen-arrow:hover{ transform:translateY(-50%) scale(1.06); box-shadow:0 14px 30px rgba(33,18,8,.09); }
+  .seen-arrow:active{ transform:translateY(-50%) scale(.98); }
+  .seen-arrow svg{ width:18px;height:18px; display:block; fill:var(--fg); }
+
+  .seen-arrow.left{ left:12px; }
+  .seen-arrow.right{ right:12px; }
+
+  @media(max-width:900px){
+    .seen-item{ width:280px; }
+    .seen-media{ height:180px; }
+    .seen-wrap{ padding:18px 18px 28px; }
+  }
+  @media(max-width:600px){
+    .seen-item{ width:240px; }
+    .seen-media{ height:140px; }
+    .seen-arrow{ width:36px;height:36px; }
+  }
+
+  /* ---------- Featured Projects (kept below) ---------- */
+  .featured {
+    max-width:1100px;
+    margin:56px auto;
+    padding:36px 20px;
+  }
+  .featured h2{
+    font-size:28px;font-weight:800;margin-bottom:18px;text-align:left;
+  }
+  .feature-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:20px;
+  }
+  @media(max-width:880px){ .feature-grid{ grid-template-columns:1fr; } }
+
+  .project-card{
+    display:flex;
+    gap:18px;
+    background:#fff;
+    padding:16px;
+    border-radius:14px;
+    box-shadow:0 12px 36px rgba(33,18,8,.04);
+    border:1px solid rgba(0,0,0,.04);
+    align-items:flex-start;
+  }
+  .project-card .logo{
+    flex:0 0 88px;
+    width:88px;height:88px;border-radius:12px;overflow:hidden;
+    display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg,rgba(174,224,180,.06),rgba(231,248,227,.02));
+    border:1px solid rgba(0,0,0,.03);
+  }
+  .project-card .logo img{max-width:80%;max-height:80%;display:block;}
+
+  .project-main{flex:1;min-width:0;}
+  .project-title{
+    font-weight:800;font-size:18px;margin:0 0 6px;display:flex;gap:10px;align-items:center;
+  }
+  .project-title a{ color:var(--fg); text-decoration:none; }
+  .project-title a:hover{ color:#357a38; text-decoration:underline; }
+  .badges{ display:flex; gap:8px; margin-bottom:8px; flex-wrap:wrap; }
+  .badge{ background:rgba(174,224,180,.12); color:var(--fg); padding:6px 8px; border-radius:999px; font-weight:700; font-size:12px; border:1px solid rgba(174,224,180,.35); }
+
+  .project-desc{ color:var(--muted); font-size:15px; line-height:1.5; margin-bottom:12px; }
+
+  .gallery{ display:flex; gap:10px; flex-wrap:wrap; align-items:center; }
+  .thumb{
+    width:84px;height:56px;border-radius:8px;overflow:hidden;flex:0 0 auto;
+    border:1px solid rgba(0,0,0,.04);cursor:pointer;background:#f7f9f7;
+  }
+  .thumb img{width:100%;height:100%;object-fit:cover;display:block;}
+
+  .small-note{ font-size:13px;color:var(--muted);margin-top:8px; }
+
+  .project-card.brallium{ border-left:6px solid var(--accent1); }
+  .project-card.clientloop{ border-left:6px solid rgba(53,122,56,.85); }
+
+  /* modal */
+  .fp-modal{
+    position:fixed;inset:0;display:none;align-items:center;justify-content:center;
+    background:rgba(11,9,15,.6);z-index:9999;padding:24px;
+  }
+  .fp-modal.open{ display:flex; }
+  .fp-modal img{ max-width:calc(100% - 160px); max-height:calc(100% - 160px); border-radius:10px; box-shadow:0 30px 80px rgba(7,6,8,.6); }
+  .fp-close{
+    position:fixed;right:28px;top:28px;background:rgba(255,255,255,.95);border-radius:999px;padding:10px;border:0;cursor:pointer;
+    box-shadow:0 6px 20px rgba(33,18,8,.12);
+  }
+  .fp-caption{ color:#fff;font-weight:600;margin-top:12px;text-align:center;max-width:80%; }
+
+  /* footer style */
+  footer{ text-align:center;padding:30px 0;font-size:13px;color:var(--muted); }
+
+  /* ---------- Scroll arrow (connected) - UPDATED GREEN STYLING ---------- */
+  .scroll-arrow {
+    position:relative;
+    margin:30px auto 0;
+    width:56px;height:56px;border-radius:999px;
+    display:flex;align-items:center;justify-content:center;
+    /* green gradient background */
+    background: linear-gradient(180deg, var(--accent1), #9edfa2);
+    border: 1px solid rgba(46,122,66,0.12);
+    /* stronger mint glow */
+    box-shadow: 0 10px 30px rgba(174,224,180,0.22), 0 0 28px rgba(174,224,180,0.12);
+    cursor:pointer;
+    transition: transform .18s ease, box-shadow .2s ease, opacity .18s ease;
+    z-index:40;
+  }
+  .scroll-arrow:focus{ outline:3px solid rgba(174,224,180,.28); outline-offset:6px; }
+  .scroll-arrow:hover{ transform: translateY(-6px) scale(1.03); box-shadow: 0 20px 48px rgba(174,224,180,0.28), 0 0 36px rgba(174,224,180,0.18); }
+
+  /* arrow icon - white for contrast */
+  .scroll-arrow svg{ width:20px;height:20px; fill:#ffffff; display:block; opacity:0.98; }
+
+  /* connector line under arrow - green gradient */
+  .scroll-arrow::after{
+    content:"";
+    position:absolute;
+    left:50%;
+    transform:translateX(-50%);
+    top:64px;
+    width:3px;
+    height:40px;
+    background: linear-gradient(to bottom, rgba(174,224,180,.9), rgba(174,224,180,.35));
+    border-radius:2px;
+    opacity:1;
+    animation: connector 1.6s linear infinite;
+    box-shadow: 0 6px 18px rgba(174,224,180,0.12);
+  }
+
+  /* more pronounced bounce and subtle pulse on the inner arrow */
+  @keyframes bounce {
+    0%{ transform: translateY(0); opacity:1; }
+    45%{ transform: translateY(10px); opacity:0.9; }
+    65%{ transform: translateY(6px); opacity:0.95; }
+    100%{ transform: translateY(0); opacity:1; }
+  }
+
+  @keyframes pulse {
+    0% { box-shadow: 0 8px 20px rgba(174,224,180,0.18); }
+    50% { box-shadow: 0 18px 48px rgba(174,224,180,0.26); }
+    100% { box-shadow: 0 8px 20px rgba(174,224,180,0.18); }
+  }
+
+  .scroll-arrow .arrow-inner{
+    display:inline-block;
+    animation: bounce 1.8s cubic-bezier(.2,.9,.2,1) infinite;
+  }
+
+  .scroll-arrow.pulse {
+    animation: none;
+    will-change: box-shadow;
+    animation: pulse 2.6s ease-in-out infinite;
+  }
+
+  /* hide connector on very small screens to reduce clutter */
+  @media(max-width:640px){
+    .scroll-arrow::after{ display:none; }
+  }
+
+  :focus{ outline:3px solid rgba(174,224,180,.25); outline-offset:3px; }
+</style>
 </head>
 <body>
 
-  <!-- NAV -->
-  <div class="nav">
-    <div class="container nav-inner">
-      <div class="chip"><span>💜</span><strong>Bella Yu</strong></div>
-      <div class="menu">
-        <a href="#experience">Experience</a>
-        <a href="#awards">Awards</a>
-        <a href="#spotlight">Spotlight</a>
-        <a href="#contact">Contact</a>
-      </div>
-    </div>
+<!-- HERO -->
+<section id="hero" class="hero" aria-labelledby="heroTitle">
+  <h1 id="heroTitle">Hi! This is Bella Yu</h1>
+  <div class="hero-row" id="heroRow"></div>
+  <p class="lead" id="heroLead">an award-winning product manager</p>
+</section>
+
+<!-- Product Concept -->
+<section id="product-concept" class="product-concept" aria-labelledby="pc-title">
+  <div class="pc-photo">
+    <img src="hero1.jpg" alt="Bella Yu portrait">
   </div>
 
-  <main class="container">
+  <div class="pc-text">
+    <h2 id="pc-title"
+        style="font-family:'Times New Roman',Times,serif;
+               margin-top:0;margin-bottom:20px;
+               font-size:26px;">
+      Entrepreneurship Shaped Me
+    </h2>
 
-    <!-- HERO -->
-    <section class="section hero grid grid-2">
-      <div class="card p-24">
-        <span class="badge">AI • AR/VR • Product Growth</span>
-        <h1 style="margin-top:12px">Bella Yu</h1>
-        <p class="muted" style="margin-top:8px">
-          Product Manager crafting AI-powered, human-centered products — from incubations to scaled launches.
-        </p>
-        <div class="row" style="margin-top:16px">
-          <a class="btn" href="mailto:bellayu1600@gmail.com">Email</a>
-          <a class="btn alt" href="https://www.linkedin.com/in/" target="_blank">LinkedIn</a>
-          <a class="btn alt" href="https://github.com/bellayu17" target="_blank">GitHub</a>
-        </div>
-        <div class="row" style="margin-top:14px">
-          <span class="pill">📍 Los Angeles, CA</span>
-          <span class="pill">Open to RPM/PM • 2026</span>
-        </div>
-      </div>
+    <p>
+      My <span class="bubble small">startup experience</span> put me through a journey of 
+      <span class="bubble small">countless trials</span> — reaching for something hard to get but doing so anyway.<br><br>
+      It taught me to create my own <span class="bubble small">serendipity</span>,<br>
+      to keep <span class="bubble small">talking</span>, <span class="bubble small">pitching</span>, and 
+      <span class="bubble small">iterating</span> to color outside the lines.<br><br>
+    </p>
 
-      <div class="card p-24">
-        <h3 class="title" style="font-size:20px">About</h3>
-        <p class="muted">
-          I bring interdisciplinary insight, founder-level boldness, and the spark to amplify products — blending AI, AR/VR, and storytelling to ship distinctive experiences.
-        </p>
-      </div>
-    </section>
-
-    <!-- EXPERIENCE -->
-    <section id="experience" class="section">
-      <h2 class="title">Experience</h2>
-      <p class="subtitle">Selected impact</p>
-
-      <div class="grid grid-2">
-        <div class="card p-20">
-          <h3 style="margin:0">FOX (News & Sports) — PM Intern</h3>
-          <p class="muted" style="margin:6px 0 10px">AI Personalization & AdTech · 2025</p>
-          <ul class="list">
-            <li>Led GenAI personalization beta for FOX News; addressed multigenerational engagement.</li>
-            <li>Spearheaded YOLO model for real-time ad optimization; 96% score-point detection.</li>
-          </ul>
-        </div>
-
-        <div class="card p-20">
-          <h3 style="margin:0">Genentech — PM (AR/AI Digitization)</h3>
-          <p class="muted" style="margin:6px 0 10px">2024</p>
-          <ul class="list">
-            <li>Shipped 3D digital twin for manufacturing; achieved 100% digitization in 3 months.</li>
-            <li>MVP featured to 600+ dept; recognized by C-suite; company-wide newsletter highlight.</li>
-          </ul>
-        </div>
-
-        <div class="card p-20">
-          <h3 style="margin:0">Clientloop — Founder/CEO</h3>
-          <p class="muted" style="margin:6px 0 10px">AI Outreach Agent · NSF I-Corps · 2023–25</p>
-          <ul class="list">
-            <li>Piloted MVPs at UCLA, CMU, startups & agencies; 29.35% conversion (~+15% vs competitors).</li>
-            <li>Designed & ran user research + A/B testing to boost activation & adoption.</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <!-- AWARDS -->
-    <section id="awards" class="section">
-      <h2 class="title">Awards & Recognition</h2>
-      <div class="grid grid-3">
-        <div class="card p-16">
-          <strong>Winner — Knapp Venture Competition (UCLA Anderson)</strong>
-          <p class="muted">First undergraduate to beat MBA teams</p>
-        </div>
-        <div class="card p-16">
-          <strong>U.S. Patent (Provisional #63/761,586)</strong>
-          <p class="muted">Innovation in AI/biomaterials</p>
-        </div>
-        <div class="card p-16">
-          <strong>Top 6 — Women Founders Network</strong>
-          <p class="muted">National finalist</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- SPOTLIGHT -->
-    <section id="spotlight" class="section">
-      <h2 class="title">Featured Spotlight</h2>
-      <p class="subtitle">Images stored in <code>assets/spotlight/</code></p>
-      <div class="gallery" id="gallery"></div>
-    </section>
-
-    <!-- CONTACT -->
-    <section id="contact" class="section">
-      <div class="card p-24">
-        <h2 class="title">Let’s build something meaningful.</h2>
-        <p class="subtitle">Open to RPM/PM roles and collaborations in AI, AR/VR, and growth.</p>
-        <div class="row" style="margin-top:10px">
-          <a class="btn" href="mailto:bellayu1600@gmail.com">Email</a>
-          <a class="btn alt" href="https://www.linkedin.com/in/" target="_blank">LinkedIn</a>
-          <a class="btn alt" href="https://github.com/bellayu17" target="_blank">GitHub</a>
-        </div>
-      </div>
-    </section>
-
-  </main>
-
-  <footer>
-    <div class="container" style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap">
-      <span>© <span id="year"></span> Bella Yu</span>
-      <span>Built with HTML • CSS • JS</span>
-    </div>
-  </footer>
-
-  <!-- Lightbox -->
-  <div class="lightbox" id="lightbox">
-    <button class="close" id="lb-close">✕</button>
-    <img id="lb-img" alt="Spotlight"/>
+    <p>
+      It shaped me to believe <span class="bubble small">every step counts</span>.<br><br>
+      No conversation is without value.<br>
+      No rejection is meaningless.<br><br>
+      It also shaped my belief in <span class="bubble small">empathy</span> — I build because I care,<br>
+      and because I care, I can deliver what truly <span class="bubble small">resonates</span>.
+    </p>
   </div>
+</section>
 
-  <script>
-  const SPOTLIGHT_BASE = "assets/spotlight/";
-  const SPOTLIGHT = [
-    { file: "yc-conference.jpg", title: "YC Conference" },
-    { file: "with garry.png", title: "With Garry Tan" },
-    { file: "YC investor meetup.png", title: "YC Investor Meetup" },
-    { file: "entrepreneurship comp.png", title: "Entrepreneurship Competition" },
-    { file: "shark tank.png", title: "Shark Tank Casting" },
-    { file: "Fox intern spotlight.JPG", title: "FOX Intern Spotlight" }
-  ];
+<!-- AS SEEN ON (carousel) -->
+<section id="seen" class="as-seen" aria-labelledby="seenTitle">
+  <h2 id="seenTitle">Awards & Recognition</h2>
 
-  const gallery = document.getElementById('gallery');
+  <div class="seen-wrap" aria-label="As seen on carousel" id="seenWrap">
+    <button class="seen-arrow left" id="seenPrev" aria-label="Scroll left">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15.41 7.41 14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+    </button>
 
-  function addCard(src, title) {
-    const wrap = document.createElement('figure');
-    wrap.className = 'imgwrap';
-    const img = document.createElement('img');
-    img.src = src;
-    img.alt = title || 'Featured';
-    img.loading = 'lazy';
-    img.onerror = () => {
-      console.error("Image failed to load:", src);
-      img.remove(); // remove broken img
-      const ph = document.createElement('div');
-      ph.style.height = '220px';
-      ph.style.display = 'grid';
-      ph.style.placeItems = 'center';
-      ph.style.background = '#f3eaff';
-      ph.style.color = '#7b5fb4';
-      ph.textContent = 'Image not found';
-      wrap.prepend(ph);
-    };
-    const cap = document.createElement('figcaption');
-    cap.className = 'caption';
-    cap.textContent = title || 'Featured';
-    wrap.appendChild(img);
-    wrap.appendChild(cap);
-    wrap.addEventListener('click', () => openLightbox(src, title));
-    gallery.appendChild(wrap);
+    <div class="seen-track" id="seenTrack" tabindex="0" role="list">
+      <div class="seen-item" role="listitem" aria-label="FOX Internship Feature">
+        <img class="seen-media" src="assets/spotlight/Fox intern spotlight.JPG" alt="FOX Internship feature">
+        <div class="seen-caption">FOX Internship Feature <small>Spotlight</small></div>
+      </div>
+
+      <div class="seen-item highlight" role="listitem" aria-label="Bold Journey feature">
+        <a href="https://boldjourney.com/meet-bella-yu/" target="_blank" rel="noopener noreferrer">
+          <img class="seen-media" src="assets/spotlight/bold Journey.jpg" alt="Bold Journey feature: Meet Bella Yu">
+          <div class="seen-caption">Featured on <strong>Bold Journey</strong><small>Interview</small></div>
+        </a>
+      </div>
+
+      <div class="seen-item highlight" role="listitem" aria-label="UCLA Knapp Venture Competition">
+        <a href="https://www.linkedin.com/posts/pricecenter_uclaentrepreneurs-whyanderson-pitchcompetition-activity-7330264745012264960-Ei8H?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEKwQy0B-SH_2NNZMfzz0DFOLK1_ofxIkR4" target="_blank" rel="noopener noreferrer">
+          <img class="seen-media" src="assets/spotlight/entrepreneurship comp.png" alt="UCLA Knapp Venture Competition">
+          <div class="seen-caption">UCLA <strong>Knapp Venture Competition</strong><small>First undergrad winner in 43 years</small></div>
+        </a>
+      </div>
+
+      <!-- YC Investor Meetup — photo-only card -->
+      <div class="seen-item" role="listitem" aria-label="YC Investor Meetup">
+        <img class="seen-media" src="assets/spotlight/yc_meetup.jpeg" alt="YC investor meetup group photo">
+        <div class="seen-caption">YC Investor Meetup <small>2025 YC Startup School</small></div>
+      </div>
+
+      <div class="seen-item seen-patent" role="listitem" aria-label="Patent">
+        <div>
+          U.S. Patent<br><strong>#63/761,586</strong>
+          <div style="font-weight:600;font-size:13px;color:var(--muted);margin-top:8px;">Filed</div>
+        </div>
+      </div>
+    </div>
+
+    <button class="seen-arrow right" id="seenNext" aria-label="Scroll right">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.59 16.59 13.17 12 8.59 7.41 10 6l6 6-6 6z"/></svg>
+    </button>
+  </div>
+</section>
+
+<!-- Featured Projects -->
+<section id="featured" class="featured" aria-labelledby="featured-title">
+  <h2 id="featured-title">Featured Projects</h2>
+
+  <div class="feature-grid">
+
+    <!-- Brallium -->
+    <article class="project-card brallium" aria-labelledby="proj-brallium">
+      <div class="logo" aria-hidden="true">
+        <img src="assets/spotlight/brallium_logo.png" alt="Brallium logo">
+      </div>
+      <div class="project-main">
+        <h3 id="proj-brallium" class="project-title">
+          <a href="https://www.brallium.com" target="_blank" rel="noopener noreferrer">Brallium</a>
+          <span style="font-size:12px;color:var(--muted);font-weight:700;">&nbsp;•&nbsp;Entrepreneurship</span>
+        </h3>
+
+        <div class="badges">
+          <span class="badge">Product Launch</span>
+          <span class="badge">Investment Relationship</span>
+          <span class="badge">Patent Pending</span>
+        </div>
+
+        <p class="project-desc">
+          Brallium is my sustainable ecommerce startup. We received a green certificate for our prototype, and were selected for Shark Tank casting.
+        </p>
+
+        <div class="gallery" aria-hidden="false">
+          <div class="thumb" tabindex="0" data-full="assets/spotlight/greencert.jpg" data-caption="Brallium — Green Certificate">
+            <img src="assets/spotlight/greencert.jpg" alt="Brallium green certificate">
+          </div>
+
+          <div class="thumb" tabindex="0" data-full="assets/spotlight/shark tank.png" data-caption="Brallium — Shark Tank Casting">
+            <img src="assets/spotlight/shark tank.png" alt="Brallium Shark Tank casting">
+          </div>
+        </div>
+        <div class="small-note">Link: <a href="https://www.brallium.com" target="_blank" rel="noopener noreferrer">brallium.com</a></div>
+      </div>
+    </article>
+
+    <!-- ClientLoop -->
+    <article class="project-card clientloop" aria-labelledby="proj-clientloop">
+      <div class="logo">
+        <img src="assets/spotlight/logo.jpg" alt="ClientLoop logo">
+      </div>
+      <div class="project-main">
+        <h3 id="proj-clientloop" class="project-title">
+          ClientLoop
+          <span style="font-size:12px;color:var(--muted);font-weight:700;">&nbsp;•&nbsp;B2B SaaS</span>
+        </h3>
+
+        <div class="badges">
+          <span class="badge">NSF I-Corps</span>
+          <span class="badge">Apple-Approved</span>
+          <span class="badge">AI Agent</span>
+        </div>
+
+        <p class="project-desc">
+          ClientLoop went through NSF I-Corps curriculum and has since achieved Apple approval — now live for users. I led user research, rapid iterations, and platform reliability to get it production-ready.
+        </p>
+
+        <div class="gallery">
+          <div class="thumb" tabindex="0" data-full="assets/spotlight/nsf.png" data-caption="ClientLoop NSF">
+            <img src="assets/spotlight/nsf.png" alt="ClientLoop NSF">
+          </div>
+
+          <div class="thumb" tabindex="0" data-full="assets/spotlight/google1.png" data-caption="ClientLoop — iOS App">
+            <img src="assets/spotlight/google1.png" alt="ClientLoop iOS">
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- Genentech -->
+    <article class="project-card" aria-labelledby="proj-genentech">
+      <div class="logo">
+        <img src="genentech.png" alt="Genentech logo">
+      </div>
+      <div class="project-main">
+        <h3 id="proj-genentech" class="project-title">Genentech <span style="font-size:12px;color:var(--muted);font-weight:700;">&nbsp;•&nbsp;Product Internship</span></h3>
+
+        <div class="badges">
+          <span class="badge">System Optimization</span>
+          <span class="badge">CapEx & OpEx</span>
+        </div>
+
+        <p class="project-desc">
+          Collaboration with Genentech focused on workflow improvements and pilot studies. I contributed product requirements, stakeholder interviews, and pilot rollouts to validate feasibility and impact.
+        </p>
+
+        <div class="gallery">
+        </div>
+      </div>
+    </article>
+
+    <!-- FOX Internship -->
+    <article class="project-card" aria-labelledby="proj-fox">
+      <div class="logo">
+        <img src="fox.png" alt="FOX logo">
+      </div>
+      <div class="project-main">
+        <h3 id="proj-fox" class="project-title">FOX Internship Experience <span style="font-size:12px;color:var(--muted);font-weight:700;">&nbsp;•&nbsp;Product Internship</span></h3>
+
+        <div class="badges">
+          <span class="badge">AI Ad Revenue</span>
+          <span class="badge">Financial Dashboard</span>
+        </div>
+
+        <p class="project-desc">
+          Internship at FOX featured leveraging YOLO AI models to optimize Ad Placement; Featured on FOX spotlight for contributions.<br>
+        </p>
+
+        <div class="gallery">
+        </div>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<!-- Modal lightbox - single element for all galleries -->
+<div class="fp-modal" id="fpModal" role="dialog" aria-modal="true" aria-hidden="true">
+  <button class="fp-close" id="fpClose" aria-label="Close image">✕</button>
+  <div style="text-align:center;">
+    <img id="fpImg" src="" alt="">
+    <div class="fp-caption" id="fpCaption"></div>
+  </div>
+</div>
+
+<!-- FOOTER at the very end -->
+<footer>
+  © <span id="year"></span> Bella Yu
+</footer>
+
+<script>
+document.getElementById('year').textContent=new Date().getFullYear();
+
+const HERO_IMAGES=[
+  {src:"hero1.jpg",title:"Knapp Venture Winner"},
+  {src:"hero2.png",title:"Conference Moment"},
+  {src:"hero3.png",title:"Shark Tank Casting"},
+  {src:"hero4.png",title:"Outdoor Smile"}
+];
+const row=document.getElementById('heroRow');
+HERO_IMAGES.forEach(img=>{
+  const card=document.createElement('div');
+  card.className='hero-card';
+  const image=document.createElement('img');
+  image.src=img.src;
+  image.alt=img.title;
+  image.loading='lazy';
+  card.appendChild(image);
+  row.appendChild(card);
+});
+
+window.addEventListener('load',()=>{
+  const startDelay=80;
+  const title=document.getElementById('heroTitle');
+  const lead=document.getElementById('heroLead');
+  setTimeout(()=>title.classList.add('in'),startDelay+60);
+  setTimeout(()=>lead.classList.add('in'),startDelay+200);
+  const cards=Array.from(document.querySelectorAll('.hero-card'));
+  cards.forEach((c,i)=>{setTimeout(()=>c.classList.add('in'),startDelay+320+i*120);});
+});
+</script>
+
+<script>
+/* Carousel: duplicates items for seamless loop, faster autoplay, pause on hover/focus, arrow control */
+(function(){
+  const wrap = document.getElementById('seenWrap');
+  const track = document.getElementById('seenTrack');
+  const prevBtn = document.getElementById('seenPrev');
+  const nextBtn = document.getElementById('seenNext');
+  let isPaused = false;
+  let rafId = null;
+
+  // Faster rolling speed (px per frame)
+  let velocity = 1.1;
+
+  // Duplicate children to allow seamless loop (only once)
+  if(!track.dataset.looped){
+    const originals = Array.from(track.children);
+    originals.forEach(node => {
+      track.appendChild(node.cloneNode(true));
+    });
+    track.dataset.looped = "1";
   }
 
-  SPOTLIGHT.forEach(i => addCard(SPOTLIGHT_BASE + i.file, i.title));
+  // Auto-scroll loop
+  function step(){
+    if(!isPaused){
+      const maxScroll = track.scrollWidth / 2;
+      track.scrollLeft += velocity;
+      if(track.scrollLeft >= maxScroll){
+        track.scrollLeft = track.scrollLeft - maxScroll;
+      }
+    }
+    rafId = requestAnimationFrame(step);
+  }
+  rafId = requestAnimationFrame(step);
 
-  // Lightbox (unchanged)
-  const lb = document.getElementById('lightbox');
-  const lbImg = document.getElementById('lb-img');
-  const lbClose = document.getElementById('lb-close');
-  function openLightbox(src, alt){ lbImg.src = src; lbImg.alt = alt || 'Spotlight'; lb.classList.add('open'); }
-  lbClose.addEventListener('click', ()=> lb.classList.remove('open'));
-  lb.addEventListener('click', (e)=> { if(e.target === lb) lb.classList.remove('open'); });
-  document.addEventListener('keydown', (e)=> { if(e.key === 'Escape') lb.classList.remove('open'); });
+  // Pause/resume on hover/focus
+  wrap.addEventListener('mouseenter', ()=> isPaused = true);
+  wrap.addEventListener('mouseleave', ()=> isPaused = false);
+  wrap.addEventListener('focusin', ()=> isPaused = true);
+  wrap.addEventListener('focusout', ()=> isPaused = false);
+
+  // Arrow controls (scroll by half visible width)
+  function scrollByAmount(amount){
+    track.scrollBy({ left: amount, behavior: 'smooth' });
+  }
+  prevBtn.addEventListener('click', ()=> scrollByAmount(-Math.round(wrap.clientWidth/2)));
+  nextBtn.addEventListener('click', ()=> scrollByAmount(Math.round(wrap.clientWidth/2)));
+
+  // If user interacts via wheel/touch, pause briefly
+  let lastUser = 0;
+  function userInteraction(){
+    lastUser = Date.now();
+    isPaused = true;
+    setTimeout(()=> {
+      if(Date.now() - lastUser > 400) { isPaused = false; }
+    }, 500);
+  }
+  track.addEventListener('wheel', userInteraction, { passive:true });
+  track.addEventListener('touchstart', userInteraction, { passive:true });
+  track.addEventListener('touchmove', userInteraction, { passive:true });
+
+  // Clean up
+  window.addEventListener('beforeunload', ()=> cancelAnimationFrame(rafId));
+})();
+</script>
+
+<script>
+/* Simple gallery lightbox for featured projects */
+(function(){
+  const modal = document.getElementById('fpModal');
+  const modalImg = document.getElementById('fpImg');
+  const modalCaption = document.getElementById('fpCaption');
+  const closeBtn = document.getElementById('fpClose');
+
+  function openModal(src, caption){
+    modalImg.src = src;
+    modalImg.alt = caption || '';
+    modalCaption.textContent = caption || '';
+    modal.classList.add('open');
+    modal.setAttribute('aria-hidden', 'false');
+    closeBtn.focus();
+  }
+
+  function closeModal(){
+    modal.classList.remove('open');
+    modal.setAttribute('aria-hidden', 'true');
+    modalImg.src = '';
+    modalCaption.textContent = '';
+  }
+
+  document.querySelectorAll('.featured .thumb').forEach(t => {
+    t.addEventListener('click', ()=>{
+      const src = t.dataset.full;
+      const cap = t.dataset.caption || '';
+      if(src) openModal(src, cap);
+    });
+    t.addEventListener('keydown', (e)=>{
+      if(e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        t.click();
+      }
+    });
+  });
+
+  closeBtn.addEventListener('click', closeModal);
+  modal.addEventListener('click', (e)=>{
+    if(e.target === modal) closeModal();
+  });
+  document.addEventListener('keydown', (e)=>{
+    if(e.key === 'Escape' && modal.classList.contains('open')) closeModal();
+  });
+})();
+</script>
+
+<script>
+/* Inject connected scroll arrows between main sections and hook up behavior */
+(function(){
+  const selectors = ['hero', 'product-concept', 'seen', 'featured'];
+  const sections = selectors.map(s => document.getElementById(s)).filter(Boolean);
+
+  // Build arrow element
+  function makeArrow(targetId){
+    const btn = document.createElement('button');
+    btn.className = 'scroll-arrow pulse'; // pulse class for subtle glow
+    btn.type = 'button';
+    btn.setAttribute('aria-label', 'Scroll to next section');
+    btn.setAttribute('tabindex','0');
+    // inner svg icon (down arrow)
+    btn.innerHTML = '<span class="arrow-inner" aria-hidden="true">' +
+      '<svg viewBox="0 0 24 24" focusable="false" aria-hidden="true"><path d="M12 5v14m0 0l6-6M12 19l-6-6" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>' +
+      '</span>';
+    btn.dataset.target = targetId;
+    return btn;
+  }
+
+  // Attach arrows to each section except the last one
+  sections.forEach((sec, idx) => {
+    if(idx === sections.length - 1) return; // skip last
+    const nextSec = sections[idx + 1];
+    const arrow = makeArrow(nextSec.id || '');
+    // place arrow at the end of the section (centered)
+    const wrapper = document.createElement('div');
+    wrapper.style.display = 'flex';
+    wrapper.style.justifyContent = 'center';
+    wrapper.style.width = '100%';
+    wrapper.style.marginTop = '18px';
+    wrapper.appendChild(arrow);
+    sec.appendChild(wrapper);
+
+    // click behavior
+    arrow.addEventListener('click', (e)=>{
+      e.preventDefault();
+      const tid = arrow.dataset.target;
+      const targetEl = document.getElementById(tid);
+      if(targetEl) {
+        targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        setTimeout(()=> {
+          const focusable = targetEl.querySelector('a, button, [tabindex]:not([tabindex="-1"])');
+          (focusable || targetEl).focus({ preventScroll: true });
+        }, 650);
+      }
+    });
+
+    // keyboard behavior: Enter/Space triggers
+    arrow.addEventListener('keydown', (e)=>{
+      if(e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        arrow.click();
+      }
+    });
+  });
+
+})();
 </script>
 
 </body>
