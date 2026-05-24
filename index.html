@@ -10,7 +10,7 @@
     --bg:white;
     --fg:#2b2340;
     --muted:rgba(43,35,64,.66);
-    --accent1:#aee0b4; /* soft minty green */
+    --accent1:#aee0b4;
     --accent2:#e7f8e3;
     --arrow-bg: rgba(43,35,64,.06);
     --arrow-accent: rgba(53,122,56,.95);
@@ -24,7 +24,7 @@
     scroll-behavior: smooth;
   }
 
-  /* ---------- HERO (same as before) ---------- */
+  /* ---------- HERO ---------- */
   .hero{text-align:center;padding:100px 20px 120px;position:relative;}
   h1{
     font-size:48px;margin:0;font-weight:800;letter-spacing:-0.5px;
@@ -95,13 +95,12 @@
     .pc-photo{max-width:100%;height:auto;}
   }
 
-  /* ---------- AS SEEN ON (REPLACED WITH CAROUSEL) ---------- */
+  /* ---------- AS SEEN ON (carousel) ---------- */
   .as-seen{
     max-width:1100px;margin:60px auto;padding:36px 20px;text-align:center;
   }
   .as-seen h2{font-size:28px;font-weight:800;margin-bottom:18px;}
 
-  /* wrapper */
   .seen-wrap{
     position:relative;
     overflow:hidden;
@@ -111,7 +110,6 @@
     box-shadow:0 12px 36px rgba(33,18,8,.04);
   }
 
-  /* track */
   .seen-track{
     display:flex;
     gap:20px;
@@ -125,7 +123,6 @@
   }
   .seen-track::-webkit-scrollbar{ display:none; }
 
-  /* card sizing */
   .seen-item{
     flex:0 0 auto;
     width:320px;
@@ -156,6 +153,7 @@
     display:block;
     width:100%;
     object-fit:cover;
+    object-position:center;
   }
   .seen-caption{
     padding:12px 14px;
@@ -200,62 +198,278 @@
     .seen-arrow{ width:36px;height:36px; }
   }
 
-  /* ---------- Featured Projects (kept below) ---------- */
+  /* ---------- Featured Projects ---------- */
   .featured {
-    max-width:1100px;
-    margin:56px auto;
-    padding:36px 20px;
+    max-width: 1120px;
+    margin: 70px auto;
+    padding: 36px 20px;
   }
-  .featured h2{
-    font-size:28px;font-weight:800;margin-bottom:18px;text-align:left;
-  }
-  .feature-grid{
-    display:grid;
-    grid-template-columns:repeat(2,1fr);
-    gap:20px;
-  }
-  @media(max-width:880px){ .feature-grid{ grid-template-columns:1fr; } }
 
-  .project-card{
-    display:flex;
-    gap:18px;
-    background:#fff;
-    padding:16px;
-    border-radius:14px;
-    box-shadow:0 12px 36px rgba(33,18,8,.04);
-    border:1px solid rgba(0,0,0,.04);
-    align-items:flex-start;
+  .section-heading {
+    margin-bottom: 22px;
+    text-align: left;
   }
-  .project-card .logo{
-    flex:0 0 88px;
-    width:88px;height:88px;border-radius:12px;overflow:hidden;
-    display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg,rgba(174,224,180,.06),rgba(231,248,227,.02));
-    border:1px solid rgba(0,0,0,.03);
+
+  .section-heading h2 {
+    font-size: 30px;
+    font-weight: 800;
+    margin: 0 0 8px;
   }
-  .project-card .logo img{max-width:80%;max-height:80%;display:block;}
 
-  .project-main{flex:1;min-width:0;}
-  .project-title{
-    font-weight:800;font-size:18px;margin:0 0 6px;display:flex;gap:10px;align-items:center;
+  .section-heading p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 15px;
+    line-height: 1.5;
   }
-  .project-title a{ color:var(--fg); text-decoration:none; }
-  .project-title a:hover{ color:#357a38; text-decoration:underline; }
-  .badges{ display:flex; gap:8px; margin-bottom:8px; flex-wrap:wrap; }
-  .badge{ background:rgba(174,224,180,.12); color:var(--fg); padding:6px 8px; border-radius:999px; font-weight:700; font-size:12px; border:1px solid rgba(174,224,180,.35); }
 
-  .project-desc{ color:var(--muted); font-size:15px; line-height:1.5; margin-bottom:12px; }
-
-  .gallery{ display:flex; gap:10px; flex-wrap:wrap; align-items:center; }
-  .thumb{
-    width:84px;height:56px;border-radius:8px;overflow:hidden;flex:0 0 auto;
-    border:1px solid rgba(0,0,0,.04);cursor:pointer;background:#f7f9f7;
+  .project-showcase {
+    display: grid;
+    gap: 20px;
   }
-  .thumb img{width:100%;height:100%;object-fit:cover;display:block;}
 
-  .small-note{ font-size:13px;color:var(--muted);margin-top:8px; }
+  .project-feature {
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    gap: 20px;
+    padding: 18px;
+    border-radius: 22px;
+    background: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    box-shadow: 0 12px 36px rgba(33, 18, 8, 0.05);
+    overflow: hidden;
+    position: relative;
+  }
 
-  .project-card.brallium{ border-left:6px solid var(--accent1); }
-  .project-card.clientloop{ border-left:6px solid rgba(53,122,56,.85); }
+  .project-feature::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(174,224,180,.08), transparent 55%);
+    pointer-events: none;
+  }
+
+  .project-feature.brallium { border-left: 6px solid var(--accent1); }
+  .project-feature.clientloop { border-left: 6px solid rgba(53,122,56,.85); }
+  .project-feature.genentech { border-left: 6px solid rgba(150,150,150,.8); }
+  .project-feature.fox { border-left: 6px solid rgba(224,168,74,.9); }
+
+  .project-visual {
+    border-radius: 18px;
+    overflow: hidden;
+    min-height: 240px;
+    background: linear-gradient(180deg, rgba(174,224,180,.06), rgba(231,248,227,.02));
+    border: 1px solid rgba(0,0,0,.04);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .project-visual img {
+    width: 100%;
+    height: 100%;
+    min-height: 240px;
+    object-fit: cover;
+    display: block;
+  }
+
+  .placeholder-visual {
+    padding: 16px;
+  }
+
+  .placeholder-card {
+    width: 100%;
+    height: 100%;
+    min-height: 240px;
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(180deg, rgba(174,224,180,.14), rgba(231,248,227,.05));
+    text-align: center;
+    color: var(--fg);
+  }
+
+  .placeholder-card span {
+    font-size: 28px;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+  }
+
+  .placeholder-card small {
+    margin-top: 8px;
+    font-size: 14px;
+    color: var(--muted);
+  }
+
+  .project-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-width: 0;
+    position: relative;
+    z-index: 1;
+  }
+
+  .project-topline {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 10px;
+  }
+
+  .project-brand {
+    display: flex;
+    gap: 14px;
+    align-items: center;
+    min-width: 0;
+  }
+
+  .project-logo {
+    width: 58px;
+    height: 58px;
+    border-radius: 14px;
+    overflow: hidden;
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(180deg, rgba(174,224,180,.08), rgba(231,248,227,.02));
+    border: 1px solid rgba(0,0,0,.04);
+  }
+
+  .project-logo img {
+    max-width: 80%;
+    max-height: 80%;
+    display: block;
+  }
+
+  .project-brand h3 {
+    margin: 0;
+    font-size: 22px;
+    font-weight: 800;
+    line-height: 1.1;
+  }
+
+  .project-subtitle {
+    margin: 6px 0 0;
+    color: var(--muted);
+    font-size: 14px;
+  }
+
+  .project-type {
+    font-size: 12px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    color: #357a38;
+    background: rgba(174,224,180,.16);
+    border: 1px solid rgba(174,224,180,.35);
+    padding: 8px 10px;
+    border-radius: 999px;
+    white-space: nowrap;
+  }
+
+  .project-desc {
+    margin: 10px 0 14px;
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--fg);
+    max-width: 62ch;
+  }
+
+  .project-badges {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 16px;
+  }
+
+  .badge {
+    background: rgba(174,224,180,.12);
+    color: var(--fg);
+    padding: 6px 10px;
+    border-radius: 999px;
+    font-weight: 700;
+    font-size: 12px;
+    border: 1px solid rgba(174,224,180,.35);
+  }
+
+  .project-actions {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+  }
+
+  .btn-primary,
+  .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 42px;
+    padding: 0 14px;
+    border-radius: 999px;
+    font-weight: 800;
+    font-size: 14px;
+    text-decoration: none;
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: transform .18s ease, box-shadow .18s ease, background .18s ease;
+  }
+
+  .btn-primary {
+    background: linear-gradient(180deg, var(--accent1), #9edfa2);
+    color: #fff;
+    box-shadow: 0 10px 24px rgba(174,224,180,.2);
+  }
+
+  .btn-secondary {
+    background: #fff;
+    color: var(--fg);
+    border-color: rgba(0,0,0,.08);
+  }
+
+  .btn-primary:hover,
+  .btn-secondary:hover {
+    transform: translateY(-2px);
+  }
+
+  .project-note {
+    margin: 0;
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  @media (max-width: 900px) {
+    .project-feature {
+      grid-template-columns: 1fr;
+    }
+
+    .project-visual img,
+    .placeholder-card {
+      min-height: 220px;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .section-heading h2 {
+      font-size: 26px;
+    }
+
+    .project-topline {
+      flex-direction: column;
+    }
+
+    .project-type {
+      width: fit-content;
+    }
+  }
+
+  .featured h2{font-size:28px;font-weight:800;margin-bottom:18px;text-align:left;}
 
   /* modal */
   .fp-modal{
@@ -270,19 +484,16 @@
   }
   .fp-caption{ color:#fff;font-weight:600;margin-top:12px;text-align:center;max-width:80%; }
 
-  /* footer style */
   footer{ text-align:center;padding:30px 0;font-size:13px;color:var(--muted); }
 
-  /* ---------- Scroll arrow (connected) - UPDATED GREEN STYLING ---------- */
+  /* ---------- Scroll arrow ---------- */
   .scroll-arrow {
     position:relative;
     margin:30px auto 0;
     width:56px;height:56px;border-radius:999px;
     display:flex;align-items:center;justify-content:center;
-    /* green gradient background */
     background: linear-gradient(180deg, var(--accent1), #9edfa2);
     border: 1px solid rgba(46,122,66,0.12);
-    /* stronger mint glow */
     box-shadow: 0 10px 30px rgba(174,224,180,0.22), 0 0 28px rgba(174,224,180,0.12);
     cursor:pointer;
     transition: transform .18s ease, box-shadow .2s ease, opacity .18s ease;
@@ -290,11 +501,7 @@
   }
   .scroll-arrow:focus{ outline:3px solid rgba(174,224,180,.28); outline-offset:6px; }
   .scroll-arrow:hover{ transform: translateY(-6px) scale(1.03); box-shadow: 0 20px 48px rgba(174,224,180,0.28), 0 0 36px rgba(174,224,180,0.18); }
-
-  /* arrow icon - white for contrast */
   .scroll-arrow svg{ width:20px;height:20px; fill:#ffffff; display:block; opacity:0.98; }
-
-  /* connector line under arrow - green gradient */
   .scroll-arrow::after{
     content:"";
     position:absolute;
@@ -310,17 +517,13 @@
     box-shadow: 0 6px 18px rgba(174,224,180,0.12);
   }
 
-  .patent-item {
-    background: white;
-  }
-  
+  .patent-item { background: white; }
   .patent-media {
     object-fit: contain;
     object-position: center;
     background: white;
   }
 
-  /* more pronounced bounce and subtle pulse on the inner arrow */
   @keyframes bounce {
     0%{ transform: translateY(0); opacity:1; }
     45%{ transform: translateY(10px); opacity:0.9; }
@@ -345,7 +548,6 @@
     animation: pulse 2.6s ease-in-out infinite;
   }
 
-  /* hide connector on very small screens to reduce clutter */
   @media(max-width:640px){
     .scroll-arrow::after{ display:none; }
   }
@@ -355,14 +557,12 @@
 </head>
 <body>
 
-<!-- HERO -->
 <section id="hero" class="hero" aria-labelledby="heroTitle">
   <h1 id="heroTitle">Hi! This is Bella Yu</h1>
   <div class="hero-row" id="heroRow"></div>
   <p class="lead" id="heroLead">an award-winning 2X founder, Patent Owner, NSF Scholar</p>
 </section>
 
-<!-- AS SEEN ON (carousel) -->
 <section id="seen" class="as-seen" aria-labelledby="seenTitle">
   <h2 id="seenTitle">Awards & Recognition</h2>
 
@@ -403,10 +603,9 @@
         <div class="seen-caption">Patent Filing <small>Non-provisional utility application</small></div>
       </div>
 
-      <!-- Placeholder card for LABEST image -->
       <div class="seen-item placeholder" role="listitem" aria-label="LABEST placeholder">
         <img class="seen-media" src="assets/spotlight/labest.jpeg" alt="LABEST conference" loading="lazy">
-        <div class="seen-caption">LABEST Conference Showcase <small>Healthcare Tech </small></div>
+        <div class="seen-caption">LABEST Conference Showcase <small>Healthcare Tech</small></div>
       </div>
     </div>
 
@@ -418,127 +617,173 @@
   </div>
 </section>
 
-<!-- Featured Projects -->
 <section id="featured" class="featured" aria-labelledby="featured-title">
-  <h2 id="featured-title">Featured Projects</h2>
+  <div class="section-heading">
+    <h2 id="featured-title">Featured Projects</h2>
+    <p>Selected work across startup, product, and internship experiences.</p>
+  </div>
 
-  <div class="feature-grid">
+  <div class="project-showcase">
 
-    <!-- Brallium -->
-    <article class="project-card brallium" aria-labelledby="proj-brallium">
-      <div class="logo" aria-hidden="true">
-        <img src="assets/spotlight/brallium_logo.png" alt="Brallium logo">
+    <article class="project-feature brallium" aria-labelledby="proj-brallium">
+      <div class="project-visual">
+        <img src="assets/spotlight/greencert.jpg" alt="Brallium green certificate preview" loading="lazy">
       </div>
-      <div class="project-main">
-        <h3 id="proj-brallium" class="project-title">
-          <a href="https://www.brallium.com" target="_blank" rel="noopener noreferrer">Brallium</a>
-          <span style="font-size:12px;color:var(--muted);font-weight:700;">&nbsp;•&nbsp;Entrepreneurship</span>
-        </h3>
 
-        <div class="badges">
-          <span class="badge">Product Launch</span>
-          <span class="badge">Investment Relationship</span>
-          <span class="badge">Patent Pending</span>
+      <div class="project-content">
+        <div class="project-topline">
+          <div class="project-brand">
+            <div class="project-logo">
+              <img src="assets/spotlight/brallium_logo.png" alt="Brallium logo">
+            </div>
+            <div>
+              <h3 id="proj-brallium">Brallium</h3>
+              <p class="project-subtitle">Sustainable ecommerce startup</p>
+            </div>
+          </div>
+          <span class="project-type">Entrepreneurship</span>
         </div>
 
         <p class="project-desc">
-          Brallium is my sustainable ecommerce startup. We received a green certificate for our prototype, and were selected for Shark Tank casting.
+          Built a sustainable ecommerce startup focused on product validation, early traction, and brand credibility.
         </p>
 
-        <div class="gallery" aria-hidden="false">
-          <div class="thumb" tabindex="0" data-full="assets/spotlight/greencert.jpg" data-caption="Brallium — Green Certificate">
-            <img src="assets/spotlight/greencert.jpg" alt="Brallium green certificate">
-          </div>
-
-          <div class="thumb" tabindex="0" data-full="assets/spotlight/shark tank.png" data-caption="Brallium — Shark Tank Casting">
-            <img src="assets/spotlight/shark tank.png" alt="Brallium Shark Tank casting">
-          </div>
+        <div class="project-badges">
+          <span class="badge">Product Launch</span>
+          <span class="badge">Patent Pending</span>
+          <span class="badge">Shark Tank Casting</span>
         </div>
-        <div class="small-note">Link: <a href="https://www.brallium.com" target="_blank" rel="noopener noreferrer">brallium.com</a></div>
+
+        <div class="project-actions">
+          <a class="btn-primary" href="https://www.brallium.com" target="_blank" rel="noopener noreferrer">Live Site</a>
+          <button class="btn-secondary" type="button" data-full="assets/spotlight/shark tank.png" data-caption="Brallium — Shark Tank Casting">View Proof</button>
+        </div>
+
+        <p class="project-note">Prototype recognized with a green certificate and selected for Shark Tank casting.</p>
       </div>
     </article>
 
-    <!-- ClientLoop -->
-    <article class="project-card clientloop" aria-labelledby="proj-clientloop">
-      <div class="logo">
-        <img src="assets/spotlight/logo.jpg" alt="ClientLoop logo">
+    <article class="project-feature clientloop" aria-labelledby="proj-clientloop">
+      <div class="project-visual">
+        <img src="assets/spotlight/google1.png" alt="ClientLoop app preview" loading="lazy">
       </div>
-      <div class="project-main">
-        <h3 id="proj-clientloop" class="project-title">
-          ClientLoop
-          <span style="font-size:12px;color:var(--muted);font-weight:700;">&nbsp;•&nbsp;B2B SaaS</span>
-        </h3>
 
-        <div class="badges">
+      <div class="project-content">
+        <div class="project-topline">
+          <div class="project-brand">
+            <div class="project-logo">
+              <img src="assets/spotlight/logo.jpg" alt="ClientLoop logo">
+            </div>
+            <div>
+              <h3 id="proj-clientloop">ClientLoop</h3>
+              <p class="project-subtitle">B2B SaaS AI agent</p>
+            </div>
+          </div>
+          <span class="project-type">Product</span>
+        </div>
+
+        <p class="project-desc">
+          Designed and iterated on a SaaS workflow product that moved from NSF I-Corps validation to live product release.
+        </p>
+
+        <div class="project-badges">
           <span class="badge">NSF I-Corps</span>
-          <span class="badge">Apple-Approved</span>
+          <span class="badge">Apple Approved</span>
           <span class="badge">AI Agent</span>
         </div>
 
-        <p class="project-desc">
-          ClientLoop went through NSF I-Corps curriculum and has since achieved Apple approval — now live for users. I led user research, rapid iterations, and platform reliability to get it production-ready.
-        </p>
-
-        <div class="gallery">
-          <div class="thumb" tabindex="0" data-full="assets/spotlight/nsf.png" data-caption="ClientLoop NSF">
-            <img src="assets/spotlight/nsf.png" alt="ClientLoop NSF">
-          </div>
-
-          <div class="thumb" tabindex="0" data-full="assets/spotlight/google1.png" data-caption="ClientLoop — iOS App">
-            <img src="assets/spotlight/google1.png" alt="ClientLoop iOS">
-          </div>
+        <div class="project-actions">
+          <button class="btn-primary" type="button" data-full="assets/spotlight/nsf.png" data-caption="ClientLoop — NSF I-Corps">Open Demo</button>
+          <button class="btn-secondary" type="button" data-full="assets/spotlight/google1.png" data-caption="ClientLoop — App Preview">See Screens</button>
         </div>
+
+        <p class="project-note">Led user research, iteration, and reliability work to support production readiness.</p>
       </div>
     </article>
 
-    <!-- Genentech -->
-    <article class="project-card" aria-labelledby="proj-genentech">
-      <div class="logo">
-        <img src="genentech.png" alt="Genentech logo">
+    <article class="project-feature genentech" aria-labelledby="proj-genentech">
+      <div class="project-visual placeholder-visual">
+        <div class="placeholder-card">
+          <span>Genentech</span>
+          <small>Product internship</small>
+        </div>
       </div>
-      <div class="project-main">
-        <h3 id="proj-genentech" class="project-title">Genentech <span style="font-size:12px;color:var(--muted);font-weight:700;">&nbsp;•&nbsp;Product Internship</span></h3>
 
-        <div class="badges">
+      <div class="project-content">
+        <div class="project-topline">
+          <div class="project-brand">
+            <div class="project-logo">
+              <img src="genentech.png" alt="Genentech logo">
+            </div>
+            <div>
+              <h3 id="proj-genentech">Genentech</h3>
+              <p class="project-subtitle">Product internship experience</p>
+            </div>
+          </div>
+          <span class="project-type">Internship</span>
+        </div>
+
+        <p class="project-desc">
+          Contributed to workflow improvements, stakeholder interviews, and pilot rollout planning for process optimization.
+        </p>
+
+        <div class="project-badges">
           <span class="badge">System Optimization</span>
           <span class="badge">CapEx & OpEx</span>
         </div>
 
-        <p class="project-desc">
-          Collaboration with Genentech focused on workflow improvements and pilot studies. I contributed product requirements, stakeholder interviews, and pilot rollouts to validate feasibility and impact.
-        </p>
-
-        <div class="gallery">
+        <div class="project-actions">
+          <button class="btn-primary" type="button" data-full="genentech.png" data-caption="Genentech — Internship Highlight">View Highlight</button>
+          <a class="btn-secondary" href="#hero">Back to Top</a>
         </div>
+
+        <p class="project-note">Focused on product requirements, interviews, and pilot validation.</p>
       </div>
     </article>
 
-    <!-- FOX Internship -->
-    <article class="project-card" aria-labelledby="proj-fox">
-      <div class="logo">
-        <img src="fox.png" alt="FOX logo">
+    <article class="project-feature fox" aria-labelledby="proj-fox">
+      <div class="project-visual placeholder-visual">
+        <div class="placeholder-card">
+          <span>FOX</span>
+          <small>Product internship</small>
+        </div>
       </div>
-      <div class="project-main">
-        <h3 id="proj-fox" class="project-title">FOX Internship Experience <span style="font-size:12px;color:var(--muted);font-weight:700;">&nbsp;•&nbsp;Product Internship</span></h3>
 
-        <div class="badges">
+      <div class="project-content">
+        <div class="project-topline">
+          <div class="project-brand">
+            <div class="project-logo">
+              <img src="fox.png" alt="FOX logo">
+            </div>
+            <div>
+              <h3 id="proj-fox">FOX Internship Experience</h3>
+              <p class="project-subtitle">AI advertising + dashboard work</p>
+            </div>
+          </div>
+          <span class="project-type">Internship</span>
+        </div>
+
+        <p class="project-desc">
+          Worked on AI-supported ad placement insights and reporting tools to improve visibility into performance.
+        </p>
+
+        <div class="project-badges">
           <span class="badge">AI Ad Revenue</span>
           <span class="badge">Financial Dashboard</span>
         </div>
 
-        <p class="project-desc">
-          Internship at FOX featured leveraging YOLO AI models to optimize Ad Placement; Featured on FOX spotlight for contributions.<br>
-        </p>
-
-        <div class="gallery">
+        <div class="project-actions">
+          <button class="btn-primary" type="button" data-full="fox.png" data-caption="FOX — Internship Highlight">View Highlight</button>
+          <a class="btn-secondary" href="#seen">Recognition</a>
         </div>
+
+        <p class="project-note">Featured for contributions in model-driven media optimization.</p>
       </div>
     </article>
 
   </div>
 </section>
 
-<!-- Modal lightbox - single element for all galleries -->
 <div class="fp-modal" id="fpModal" role="dialog" aria-modal="true" aria-hidden="true">
   <button class="fp-close" id="fpClose" aria-label="Close image">✕</button>
   <div style="text-align:center;">
@@ -547,7 +792,6 @@
   </div>
 </div>
 
-<!-- FOOTER at the very end -->
 <footer>
   © <span id="year"></span> Bella Yu
 </footer>
@@ -585,7 +829,6 @@ window.addEventListener('load',()=>{
 </script>
 
 <script>
-/* Carousel: duplicates items for seamless loop, faster autoplay, pause on hover/focus, arrow control */
 (function(){
   const wrap = document.getElementById('seenWrap');
   const track = document.getElementById('seenTrack');
@@ -593,11 +836,8 @@ window.addEventListener('load',()=>{
   const nextBtn = document.getElementById('seenNext');
   let isPaused = false;
   let rafId = null;
-
-  // Faster rolling speed (px per frame)
   let velocity = 1.1;
 
-  // Duplicate children to allow seamless loop (only once)
   if(!track.dataset.looped){
     const originals = Array.from(track.children);
     originals.forEach(node => {
@@ -606,7 +846,6 @@ window.addEventListener('load',()=>{
     track.dataset.looped = "1";
   }
 
-  // Auto-scroll loop
   function step(){
     if(!isPaused){
       const maxScroll = track.scrollWidth / 2;
@@ -619,20 +858,17 @@ window.addEventListener('load',()=>{
   }
   rafId = requestAnimationFrame(step);
 
-  // Pause/resume on hover/focus
   wrap.addEventListener('mouseenter', ()=> isPaused = true);
   wrap.addEventListener('mouseleave', ()=> isPaused = false);
   wrap.addEventListener('focusin', ()=> isPaused = true);
   wrap.addEventListener('focusout', ()=> isPaused = false);
 
-  // Arrow controls (scroll by half visible width)
   function scrollByAmount(amount){
     track.scrollBy({ left: amount, behavior: 'smooth' });
   }
   prevBtn.addEventListener('click', ()=> scrollByAmount(-Math.round(wrap.clientWidth/2)));
   nextBtn.addEventListener('click', ()=> scrollByAmount(Math.round(wrap.clientWidth/2)));
 
-  // If user interacts via wheel/touch, pause briefly
   let lastUser = 0;
   function userInteraction(){
     lastUser = Date.now();
@@ -645,13 +881,11 @@ window.addEventListener('load',()=>{
   track.addEventListener('touchstart', userInteraction, { passive:true });
   track.addEventListener('touchmove', userInteraction, { passive:true });
 
-  // Clean up
   window.addEventListener('beforeunload', ()=> cancelAnimationFrame(rafId));
 })();
 </script>
 
 <script>
-/* Simple gallery lightbox for featured projects */
 (function(){
   const modal = document.getElementById('fpModal');
   const modalImg = document.getElementById('fpImg');
@@ -674,16 +908,16 @@ window.addEventListener('load',()=>{
     modalCaption.textContent = '';
   }
 
-  document.querySelectorAll('.featured .thumb').forEach(t => {
-    t.addEventListener('click', ()=>{
-      const src = t.dataset.full;
-      const cap = t.dataset.caption || '';
+  document.querySelectorAll('.featured [data-full]').forEach(el => {
+    el.addEventListener('click', ()=>{
+      const src = el.dataset.full;
+      const cap = el.dataset.caption || el.textContent.trim() || '';
       if(src) openModal(src, cap);
     });
-    t.addEventListener('keydown', (e)=>{
+    el.addEventListener('keydown', (e)=>{
       if(e.key === 'Enter' || e.key === ' ') {
         e.preventDefault();
-        t.click();
+        el.click();
       }
     });
   });
@@ -699,19 +933,16 @@ window.addEventListener('load',()=>{
 </script>
 
 <script>
-/* Inject connected scroll arrows between main sections and hook up behavior */
 (function(){
   const selectors = ['hero', 'product-concept', 'seen', 'featured'];
   const sections = selectors.map(s => document.getElementById(s)).filter(Boolean);
 
-  // Build arrow element
   function makeArrow(targetId){
     const btn = document.createElement('button');
-    btn.className = 'scroll-arrow pulse'; // pulse class for subtle glow
+    btn.className = 'scroll-arrow pulse';
     btn.type = 'button';
     btn.setAttribute('aria-label', 'Scroll to next section');
     btn.setAttribute('tabindex','0');
-    // inner svg icon (down arrow)
     btn.innerHTML = '<span class="arrow-inner" aria-hidden="true">' +
       '<svg viewBox="0 0 24 24" focusable="false" aria-hidden="true"><path d="M12 5v14m0 0l6-6M12 19l-6-6" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>' +
       '</span>';
@@ -719,12 +950,10 @@ window.addEventListener('load',()=>{
     return btn;
   }
 
-  // Attach arrows to each section except the last one
   sections.forEach((sec, idx) => {
-    if(idx === sections.length - 1) return; // skip last
+    if(idx === sections.length - 1) return;
     const nextSec = sections[idx + 1];
     const arrow = makeArrow(nextSec.id || '');
-    // place arrow at the end of the section (centered)
     const wrapper = document.createElement('div');
     wrapper.style.display = 'flex';
     wrapper.style.justifyContent = 'center';
@@ -733,7 +962,6 @@ window.addEventListener('load',()=>{
     wrapper.appendChild(arrow);
     sec.appendChild(wrapper);
 
-    // click behavior
     arrow.addEventListener('click', (e)=>{
       e.preventDefault();
       const tid = arrow.dataset.target;
@@ -747,7 +975,6 @@ window.addEventListener('load',()=>{
       }
     });
 
-    // keyboard behavior: Enter/Space triggers
     arrow.addEventListener('keydown', (e)=>{
       if(e.key === 'Enter' || e.key === ' ') {
         e.preventDefault();
@@ -755,7 +982,6 @@ window.addEventListener('load',()=>{
       }
     });
   });
-
 })();
 </script>
 
