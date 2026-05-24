@@ -310,6 +310,11 @@
     box-shadow: 0 6px 18px rgba(174,224,180,0.12);
   }
 
+  .patent-image {
+    object-fit: contain;
+    background: white; /* optional */
+  }
+
   /* more pronounced bounce and subtle pulse on the inner arrow */
   @keyframes bounce {
     0%{ transform: translateY(0); opacity:1; }
@@ -388,7 +393,7 @@
         <div class="seen-caption">YC Investor Meetup <small>2025 YC Startup School</small></div>
       </div>
 
-      <div class="seen-item" role="listitem" aria-label="Patent filing">
+      <div class="seen-item patent-image" role="listitem" aria-label="Patent filing">
         <img class="seen-media" src="assets/spotlight/patent.png" alt="Patent filing illustration" loading="lazy">
         <div class="seen-caption">Patent Filing <small>Non-provisional utility application</small></div>
       </div>
