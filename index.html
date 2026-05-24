@@ -666,11 +666,10 @@
   }
 
   .traction-block {
-  margin: 10px 0 18px;
-  padding: 14px 16px;
-  border-radius: 18px;
-  background: rgba(174,224,180,.10);
-  border: 1px solid rgba(174,224,180,.30);
+  margin: 12px 0 18px;
+  padding: 0;
+  background: transparent;
+  border: 0;
 }
 
 .traction-label {
@@ -678,28 +677,34 @@
   font-weight: 900;
   text-transform: uppercase;
   letter-spacing: .12em;
-  color: #357a38;
+  color: var(--muted);
   margin-bottom: 10px;
 }
 
 .traction-logos {
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 18px;
   flex-wrap: wrap;
 }
 
 .traction-logo {
-  width: 92px;
-  height: 52px;
-  border-radius: 14px;
-  background: rgba(255,255,255,.92);
-  border: 1px solid rgba(0,0,0,.06);
+  width: 96px;
+  height: 42px;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 8px 18px rgba(33,18,8,.05);
-  padding: 8px 10px;
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+  padding: 0;
+  opacity: .92;
+  transition: transform .18s ease, opacity .18s ease;
+}
+
+.traction-logo:hover {
+  transform: translateY(-2px);
+  opacity: 1;
 }
 
 .traction-logo img {
@@ -836,19 +841,19 @@
           </p>
 
           <div class="traction-block">
-            <div class="traction-label">Recognized by</div>
+            <div class="traction-label">Recognition</div>
             <div class="traction-logos">
               <div class="traction-logo">
-                <img src="assets/spotlight/nsf.png" alt="National Science Foundation">
+                <img src="assets/spotlight/nsf_logo.png" alt="National Science Foundation">
               </div>
               <div class="traction-logo">
-                <img src="assets/spotlight/shoptalk.jpg" alt="Shoptalk">
+                <img src="assets/spotlight/shoptalk.jpeg" alt="Shoptalk">
               </div>
               <div class="traction-logo">
                 <img src="assets/spotlight/LABest logo.jpeg" alt="LABEST">
               </div>
               <div class="traction-logo">
-                <img src="assets/spotlight/bold journey.jpeg" alt="LABEST">
+                <img src="assets/spotlight/bold journey.jpeg" alt="BJ">
               </div>
             </div>
           </div>
