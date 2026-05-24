@@ -200,124 +200,112 @@
 
   /* ---------- Featured Projects ---------- */
   .featured {
-    max-width: 1120px;
-    margin: 70px auto;
-    padding: 36px 20px;
+    max-width: 1180px;
+    margin: 90px auto;
+    padding: 44px 20px;
   }
 
   .section-heading {
-    margin-bottom: 22px;
+    margin-bottom: 24px;
     text-align: left;
   }
 
   .section-heading h2 {
-    font-size: 30px;
-    font-weight: 800;
+    font-size: 32px;
+    font-weight: 900;
     margin: 0 0 8px;
+    letter-spacing: -0.03em;
   }
 
   .section-heading p {
     margin: 0;
     color: var(--muted);
     font-size: 15px;
-    line-height: 1.5;
+    line-height: 1.6;
+    max-width: 68ch;
   }
 
   .project-showcase {
     display: grid;
-    gap: 20px;
+    gap: 22px;
   }
 
-  .project-feature {
-    display: grid;
-    grid-template-columns: 320px 1fr;
-    gap: 20px;
-    padding: 18px;
-    border-radius: 22px;
-    background: #fff;
-    border: 1px solid rgba(0, 0, 0, 0.05);
-    box-shadow: 0 12px 36px rgba(33, 18, 8, 0.05);
-    overflow: hidden;
+  .project-group {
     position: relative;
+    overflow: hidden;
+    border-radius: 28px;
+    padding: 22px;
+    background:
+      linear-gradient(180deg, rgba(255,255,255,.92), rgba(255,255,255,.82));
+    border: 1px solid rgba(0,0,0,.06);
+    box-shadow:
+      0 18px 50px rgba(33, 18, 8, .06),
+      inset 0 1px 0 rgba(255,255,255,.75);
+    backdrop-filter: blur(8px);
   }
 
-  .project-feature::before {
+  .project-group::before {
     content: "";
     position: absolute;
     inset: 0;
-    background: linear-gradient(135deg, rgba(174,224,180,.08), transparent 55%);
+    background:
+      radial-gradient(circle at top right, rgba(174,224,180,.18), transparent 34%),
+      radial-gradient(circle at bottom left, rgba(231,248,227,.22), transparent 30%);
     pointer-events: none;
   }
 
-  .project-feature.brallium { border-left: 6px solid var(--accent1); }
-  .project-feature.clientloop { border-left: 6px solid rgba(53,122,56,.85); }
-  .project-feature.genentech { border-left: 6px solid rgba(150,150,150,.8); }
-  .project-feature.fox { border-left: 6px solid rgba(224,168,74,.9); }
-
-  .project-visual {
-    border-radius: 18px;
-    overflow: hidden;
-    min-height: 240px;
-    background: linear-gradient(180deg, rgba(174,224,180,.06), rgba(231,248,227,.02));
-    border: 1px solid rgba(0,0,0,.04);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  .project-group.brallium {
+    border-left: 7px solid var(--accent1);
   }
 
-  .project-visual img {
+  .project-group.clientloop {
+    border-left: 7px solid rgba(53,122,56,.88);
+  }
+
+  .project-group.internship {
+    border-left: 7px solid rgba(224,168,74,.88);
+  }
+
+  .project-main {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: 360px 1fr;
+    gap: 22px;
+    align-items: stretch;
+  }
+
+  .project-media {
+    border-radius: 22px;
+    overflow: hidden;
+    min-height: 260px;
+    background: linear-gradient(180deg, rgba(174,224,180,.08), rgba(231,248,227,.03));
+    border: 1px solid rgba(0,0,0,.05);
+    box-shadow: 0 14px 32px rgba(33,18,8,.06);
+  }
+
+  .project-media img {
     width: 100%;
     height: 100%;
-    min-height: 240px;
+    min-height: 260px;
     object-fit: cover;
     display: block;
   }
 
-  .placeholder-visual {
-    padding: 16px;
-  }
-
-  .placeholder-card {
-    width: 100%;
-    height: 100%;
-    min-height: 240px;
-    border-radius: 16px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background: linear-gradient(180deg, rgba(174,224,180,.14), rgba(231,248,227,.05));
-    text-align: center;
-    color: var(--fg);
-  }
-
-  .placeholder-card span {
-    font-size: 28px;
-    font-weight: 800;
-    letter-spacing: -0.5px;
-  }
-
-  .placeholder-card small {
-    margin-top: 8px;
-    font-size: 14px;
-    color: var(--muted);
-  }
-
-  .project-content {
+  .project-body {
     display: flex;
     flex-direction: column;
     justify-content: center;
     min-width: 0;
-    position: relative;
-    z-index: 1;
+    padding: 6px 2px;
   }
 
   .project-topline {
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
-    gap: 12px;
-    margin-bottom: 10px;
+    gap: 14px;
+    margin-bottom: 12px;
   }
 
   .project-brand {
@@ -328,56 +316,59 @@
   }
 
   .project-logo {
-    width: 58px;
-    height: 58px;
-    border-radius: 14px;
+    width: 60px;
+    height: 60px;
+    border-radius: 16px;
     overflow: hidden;
     flex: 0 0 auto;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(180deg, rgba(174,224,180,.08), rgba(231,248,227,.02));
-    border: 1px solid rgba(0,0,0,.04);
+    background: rgba(255,255,255,.78);
+    border: 1px solid rgba(0,0,0,.05);
+    box-shadow: 0 8px 20px rgba(33,18,8,.05);
   }
 
   .project-logo img {
-    max-width: 80%;
-    max-height: 80%;
+    max-width: 82%;
+    max-height: 82%;
     display: block;
   }
 
   .project-brand h3 {
     margin: 0;
-    font-size: 22px;
-    font-weight: 800;
-    line-height: 1.1;
+    font-size: 24px;
+    font-weight: 900;
+    line-height: 1.05;
+    letter-spacing: -0.03em;
   }
 
   .project-subtitle {
-    margin: 6px 0 0;
+    margin: 7px 0 0;
     color: var(--muted);
     font-size: 14px;
   }
 
   .project-type {
     font-size: 12px;
-    font-weight: 800;
+    font-weight: 900;
     text-transform: uppercase;
-    letter-spacing: .08em;
+    letter-spacing: .1em;
     color: #357a38;
-    background: rgba(174,224,180,.16);
+    background: rgba(174,224,180,.18);
     border: 1px solid rgba(174,224,180,.35);
-    padding: 8px 10px;
+    padding: 8px 11px;
     border-radius: 999px;
     white-space: nowrap;
+    align-self: flex-start;
   }
 
   .project-desc {
-    margin: 10px 0 14px;
+    margin: 8px 0 16px;
     font-size: 15px;
-    line-height: 1.6;
+    line-height: 1.7;
     color: var(--fg);
-    max-width: 62ch;
+    max-width: 68ch;
   }
 
   .project-badges {
@@ -390,9 +381,9 @@
   .badge {
     background: rgba(174,224,180,.12);
     color: var(--fg);
-    padding: 6px 10px;
+    padding: 7px 11px;
     border-radius: 999px;
-    font-weight: 700;
+    font-weight: 800;
     font-size: 12px;
     border: 1px solid rgba(174,224,180,.35);
   }
@@ -401,7 +392,7 @@
     display: flex;
     gap: 10px;
     flex-wrap: wrap;
-    margin-bottom: 10px;
+    margin-bottom: 14px;
   }
 
   .btn-primary,
@@ -409,8 +400,8 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    min-height: 42px;
-    padding: 0 14px;
+    min-height: 44px;
+    padding: 0 15px;
     border-radius: 999px;
     font-weight: 800;
     font-size: 14px;
@@ -421,13 +412,13 @@
   }
 
   .btn-primary {
-    background: linear-gradient(180deg, var(--accent1), #9edfa2);
-    color: #fff;
-    box-shadow: 0 10px 24px rgba(174,224,180,.2);
+    background: linear-gradient(180deg, var(--accent1), #97d79d);
+    color: white;
+    box-shadow: 0 12px 26px rgba(174,224,180,.24);
   }
 
   .btn-secondary {
-    background: #fff;
+    background: rgba(255,255,255,.95);
     color: var(--fg);
     border-color: rgba(0,0,0,.08);
   }
@@ -444,20 +435,147 @@
     line-height: 1.5;
   }
 
-  @media (max-width: 900px) {
-    .project-feature {
+  .subprojects {
+    position: relative;
+    z-index: 1;
+    margin-top: 18px;
+    display: grid;
+    gap: 12px;
+  }
+
+  .subprojects-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin: 2px 0 2px;
+  }
+
+  .subprojects-header h4 {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 900;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .subprojects-header span {
+    font-size: 13px;
+    color: var(--muted);
+  }
+
+  .subproject-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  .subproject-card {
+    border-radius: 18px;
+    padding: 14px 14px 13px;
+    background: rgba(255,255,255,.9);
+    border: 1px solid rgba(0,0,0,.06);
+    box-shadow: 0 10px 24px rgba(33,18,8,.04);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    min-width: 0;
+  }
+
+  .subproject-card.featured-small {
+    border-color: rgba(174,224,180,.42);
+    box-shadow: 0 12px 30px rgba(174,224,180,.12);
+  }
+
+  .subproject-head {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 10px;
+  }
+
+  .subproject-head strong {
+    display: block;
+    font-size: 15px;
+    font-weight: 900;
+    line-height: 1.2;
+  }
+
+  .subproject-head small {
+    display: block;
+    margin-top: 4px;
+    color: var(--muted);
+    font-size: 12px;
+    line-height: 1.45;
+  }
+
+  .subproject-pill {
+    flex: 0 0 auto;
+    font-size: 11px;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    color: #357a38;
+    background: rgba(174,224,180,.16);
+    border: 1px solid rgba(174,224,180,.3);
+    border-radius: 999px;
+    padding: 7px 9px;
+    white-space: nowrap;
+  }
+
+  .subproject-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .mini-tag {
+    font-size: 11px;
+    font-weight: 800;
+    padding: 5px 8px;
+    border-radius: 999px;
+    background: rgba(43,35,64,.05);
+    color: var(--muted);
+  }
+
+  .subproject-actions {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: auto;
+  }
+
+  .subproject-actions .btn-secondary,
+  .subproject-actions .btn-primary {
+    min-height: 38px;
+    padding: 0 12px;
+    font-size: 13px;
+  }
+
+  @media (max-width: 980px) {
+    .project-main {
       grid-template-columns: 1fr;
     }
 
-    .project-visual img,
-    .placeholder-card {
-      min-height: 220px;
+    .project-media img,
+    .project-media {
+      min-height: 230px;
+    }
+
+    .subproject-grid {
+      grid-template-columns: 1fr;
     }
   }
 
   @media (max-width: 600px) {
+    .featured {
+      padding: 34px 16px;
+      margin: 72px auto;
+    }
+
     .section-heading h2 {
-      font-size: 26px;
+      font-size: 27px;
     }
 
     .project-topline {
@@ -466,6 +584,10 @@
 
     .project-type {
       width: fit-content;
+    }
+
+    .project-brand h3 {
+      font-size: 22px;
     }
   }
 
@@ -620,164 +742,314 @@
 <section id="featured" class="featured" aria-labelledby="featured-title">
   <div class="section-heading">
     <h2 id="featured-title">Featured Projects</h2>
-    <p>Selected work across startup, product, and internship experiences.</p>
+    <p>Selected work grouped into bigger stories, with smaller sub-projects that show the individual pieces underneath each one.</p>
   </div>
 
   <div class="project-showcase">
 
-    <article class="project-feature brallium" aria-labelledby="proj-brallium">
-      <div class="project-visual">
-        <img src="assets/spotlight/greencert.jpg" alt="Brallium green certificate preview" loading="lazy">
+    <!-- BRALLIUM -->
+    <article class="project-group brallium" aria-labelledby="proj-brallium">
+      <div class="project-main">
+        <div class="project-media">
+          <img src="assets/spotlight/greencert.jpg" alt="Brallium green certificate preview" loading="lazy">
+        </div>
+
+        <div class="project-body">
+          <div class="project-topline">
+            <div class="project-brand">
+              <div class="project-logo">
+                <img src="assets/spotlight/brallium_logo.png" alt="Brallium logo">
+              </div>
+              <div>
+                <h3 id="proj-brallium">Brallium</h3>
+                <p class="project-subtitle">Sustainable ecommerce startup</p>
+              </div>
+            </div>
+            <span class="project-type">Entrepreneurship</span>
+          </div>
+
+          <p class="project-desc">
+            Built a sustainable ecommerce startup from validation through early traction, brand credibility, and outside recognition.
+          </p>
+
+          <div class="project-badges">
+            <span class="badge">Product Launch</span>
+            <span class="badge">Patent Pending</span>
+            <span class="badge">Shark Tank Casting</span>
+          </div>
+
+          <div class="project-actions">
+            <a class="btn-primary" href="https://www.brallium.com" target="_blank" rel="noopener noreferrer">Live Site</a>
+            <button class="btn-secondary" type="button" data-full="assets/spotlight/shark tank.png" data-caption="Brallium — Shark Tank Casting">View Proof</button>
+          </div>
+
+          <p class="project-note">Prototype recognized with a green certificate and selected for Shark Tank casting.</p>
+        </div>
       </div>
 
-      <div class="project-content">
-        <div class="project-topline">
-          <div class="project-brand">
-            <div class="project-logo">
-              <img src="assets/spotlight/brallium_logo.png" alt="Brallium logo">
+      <div class="subprojects">
+        <div class="subprojects-header">
+          <h4>Sub-projects</h4>
+          <span>Pieces under the larger Brallium story</span>
+        </div>
+
+        <div class="subproject-grid">
+          <div class="subproject-card">
+            <div class="subproject-head">
+              <div>
+                <strong>Green Certificate</strong>
+                <small>Brand trust asset and sustainability proof point.</small>
+              </div>
+              <span class="subproject-pill">Brand</span>
             </div>
-            <div>
-              <h3 id="proj-brallium">Brallium</h3>
-              <p class="project-subtitle">Sustainable ecommerce startup</p>
+            <div class="subproject-tags">
+              <span class="mini-tag">Credibility</span>
+              <span class="mini-tag">Sustainability</span>
+            </div>
+            <div class="subproject-actions">
+              <button class="btn-secondary" type="button" data-full="assets/spotlight/greencert.jpg" data-caption="Brallium — Green Certificate">Open</button>
             </div>
           </div>
-          <span class="project-type">Entrepreneurship</span>
+
+          <div class="subproject-card featured-small">
+            <div class="subproject-head">
+              <div>
+                <strong>Shark Tank Casting</strong>
+                <small>Media recognition and founder momentum.</small>
+              </div>
+              <span class="subproject-pill">Exposure</span>
+            </div>
+            <div class="subproject-tags">
+              <span class="mini-tag">Casting</span>
+              <span class="mini-tag">Validation</span>
+            </div>
+            <div class="subproject-actions">
+              <button class="btn-primary" type="button" data-full="assets/spotlight/shark tank.png" data-caption="Brallium — Shark Tank Casting">View</button>
+            </div>
+          </div>
+
+          <div class="subproject-card">
+            <div class="subproject-head">
+              <div>
+                <strong>Brand Launch</strong>
+                <small>Early customer-facing positioning and launch story.</small>
+              </div>
+              <span class="subproject-pill">Launch</span>
+            </div>
+            <div class="subproject-tags">
+              <span class="mini-tag">Go-to-market</span>
+              <span class="mini-tag">Startup</span>
+            </div>
+            <div class="subproject-actions">
+              <a class="btn-secondary" href="https://www.brallium.com" target="_blank" rel="noopener noreferrer">Visit</a>
+            </div>
+          </div>
         </div>
-
-        <p class="project-desc">
-          Built a sustainable ecommerce startup focused on product validation, early traction, and brand credibility.
-        </p>
-
-        <div class="project-badges">
-          <span class="badge">Product Launch</span>
-          <span class="badge">Patent Pending</span>
-          <span class="badge">Shark Tank Casting</span>
-        </div>
-
-        <div class="project-actions">
-          <a class="btn-primary" href="https://www.brallium.com" target="_blank" rel="noopener noreferrer">Live Site</a>
-          <button class="btn-secondary" type="button" data-full="assets/spotlight/shark tank.png" data-caption="Brallium — Shark Tank Casting">View Proof</button>
-        </div>
-
-        <p class="project-note">Prototype recognized with a green certificate and selected for Shark Tank casting.</p>
       </div>
     </article>
 
-    <article class="project-feature clientloop" aria-labelledby="proj-clientloop">
-      <div class="project-visual">
-        <img src="assets/spotlight/google1.png" alt="ClientLoop app preview" loading="lazy">
+    <!-- CLIENTLOOP -->
+    <article class="project-group clientloop" aria-labelledby="proj-clientloop">
+      <div class="project-main">
+        <div class="project-media">
+          <img src="assets/spotlight/google1.png" alt="ClientLoop app preview" loading="lazy">
+        </div>
+
+        <div class="project-body">
+          <div class="project-topline">
+            <div class="project-brand">
+              <div class="project-logo">
+                <img src="assets/spotlight/logo.jpg" alt="ClientLoop logo">
+              </div>
+              <div>
+                <h3 id="proj-clientloop">ClientLoop</h3>
+                <p class="project-subtitle">B2B SaaS AI agent</p>
+              </div>
+            </div>
+            <span class="project-type">Product</span>
+          </div>
+
+          <p class="project-desc">
+            Designed and iterated on a SaaS workflow product that moved from NSF I-Corps validation to a live release.
+          </p>
+
+          <div class="project-badges">
+            <span class="badge">NSF I-Corps</span>
+            <span class="badge">Apple Approved</span>
+            <span class="badge">AI Agent</span>
+          </div>
+
+          <div class="project-actions">
+            <button class="btn-primary" type="button" data-full="assets/spotlight/nsf.png" data-caption="ClientLoop — NSF I-Corps">Open Demo</button>
+            <button class="btn-secondary" type="button" data-full="assets/spotlight/google1.png" data-caption="ClientLoop — App Preview">See Screens</button>
+          </div>
+
+          <p class="project-note">Led user research, iteration, and reliability work to support production readiness.</p>
+        </div>
       </div>
 
-      <div class="project-content">
-        <div class="project-topline">
-          <div class="project-brand">
-            <div class="project-logo">
-              <img src="assets/spotlight/logo.jpg" alt="ClientLoop logo">
+      <div class="subprojects">
+        <div class="subprojects-header">
+          <h4>Sub-projects</h4>
+          <span>Research, release, and UI work</span>
+        </div>
+
+        <div class="subproject-grid">
+          <div class="subproject-card featured-small">
+            <div class="subproject-head">
+              <div>
+                <strong>NSF I-Corps Validation</strong>
+                <small>Interviews and market discovery for product-market fit.</small>
+              </div>
+              <span class="subproject-pill">Research</span>
             </div>
-            <div>
-              <h3 id="proj-clientloop">ClientLoop</h3>
-              <p class="project-subtitle">B2B SaaS AI agent</p>
+            <div class="subproject-tags">
+              <span class="mini-tag">Validation</span>
+              <span class="mini-tag">Discovery</span>
+            </div>
+            <div class="subproject-actions">
+              <button class="btn-primary" type="button" data-full="assets/spotlight/nsf.png" data-caption="ClientLoop — NSF I-Corps">View</button>
             </div>
           </div>
-          <span class="project-type">Product</span>
+
+          <div class="subproject-card">
+            <div class="subproject-head">
+              <div>
+                <strong>App UI Iteration</strong>
+                <small>Improved screens and flow clarity across the product experience.</small>
+              </div>
+              <span class="subproject-pill">UI</span>
+            </div>
+            <div class="subproject-tags">
+              <span class="mini-tag">Design</span>
+              <span class="mini-tag">Workflow</span>
+            </div>
+            <div class="subproject-actions">
+              <button class="btn-secondary" type="button" data-full="assets/spotlight/google1.png" data-caption="ClientLoop — App Preview">Open</button>
+            </div>
+          </div>
+
+          <div class="subproject-card">
+            <div class="subproject-head">
+              <div>
+                <strong>Release Readiness</strong>
+                <small>Polish and reliability work before launch.</small>
+              </div>
+              <span class="subproject-pill">Launch</span>
+            </div>
+            <div class="subproject-tags">
+              <span class="mini-tag">QA</span>
+              <span class="mini-tag">Stability</span>
+            </div>
+            <div class="subproject-actions">
+              <a class="btn-secondary" href="#hero">Back to Top</a>
+            </div>
+          </div>
         </div>
-
-        <p class="project-desc">
-          Designed and iterated on a SaaS workflow product that moved from NSF I-Corps validation to live product release.
-        </p>
-
-        <div class="project-badges">
-          <span class="badge">NSF I-Corps</span>
-          <span class="badge">Apple Approved</span>
-          <span class="badge">AI Agent</span>
-        </div>
-
-        <div class="project-actions">
-          <button class="btn-primary" type="button" data-full="assets/spotlight/nsf.png" data-caption="ClientLoop — NSF I-Corps">Open Demo</button>
-          <button class="btn-secondary" type="button" data-full="assets/spotlight/google1.png" data-caption="ClientLoop — App Preview">See Screens</button>
-        </div>
-
-        <p class="project-note">Led user research, iteration, and reliability work to support production readiness.</p>
       </div>
     </article>
 
-    <article class="project-feature genentech" aria-labelledby="proj-genentech">
-      <div class="project-visual placeholder-visual">
-        <div class="placeholder-card">
-          <span>Genentech</span>
-          <small>Product internship</small>
+    <!-- INTERNSHIPS -->
+    <article class="project-group internship" aria-labelledby="proj-internships">
+      <div class="project-main">
+        <div class="project-media">
+          <div class="placeholder-card" style="min-height:260px;">
+            <span>Internship Work</span>
+            <small>Genentech + FOX</small>
+          </div>
+        </div>
+
+        <div class="project-body">
+          <div class="project-topline">
+            <div class="project-brand">
+              <div class="project-logo">
+                <img src="genentech.png" alt="Internship logos">
+              </div>
+              <div>
+                <h3 id="proj-internships">Internship Experience</h3>
+                <p class="project-subtitle">Product and analytics across two teams</p>
+              </div>
+            </div>
+            <span class="project-type">Experience</span>
+          </div>
+
+          <p class="project-desc">
+            Across Genentech and FOX, contributed to workflow improvements, interviews, reporting tools, and product strategy support.
+          </p>
+
+          <div class="project-badges">
+            <span class="badge">Process Optimization</span>
+            <span class="badge">Analytics</span>
+            <span class="badge">Product Strategy</span>
+          </div>
+
+          <div class="project-actions">
+            <button class="btn-primary" type="button" data-full="genentech.png" data-caption="Genentech — Internship Highlight">Genentech</button>
+            <button class="btn-secondary" type="button" data-full="fox.png" data-caption="FOX — Internship Highlight">FOX</button>
+          </div>
+
+          <p class="project-note">Focused on user needs, execution quality, and measurable workflow improvements.</p>
         </div>
       </div>
 
-      <div class="project-content">
-        <div class="project-topline">
-          <div class="project-brand">
-            <div class="project-logo">
-              <img src="genentech.png" alt="Genentech logo">
+      <div class="subprojects">
+        <div class="subprojects-header">
+          <h4>Sub-projects</h4>
+          <span>Individual internship highlights</span>
+        </div>
+
+        <div class="subproject-grid">
+          <div class="subproject-card">
+            <div class="subproject-head">
+              <div>
+                <strong>Genentech</strong>
+                <small>Workflow optimization and stakeholder interviews.</small>
+              </div>
+              <span class="subproject-pill">Ops</span>
             </div>
-            <div>
-              <h3 id="proj-genentech">Genentech</h3>
-              <p class="project-subtitle">Product internship experience</p>
+            <div class="subproject-tags">
+              <span class="mini-tag">Interviews</span>
+              <span class="mini-tag">Pilot rollout</span>
+            </div>
+            <div class="subproject-actions">
+              <button class="btn-secondary" type="button" data-full="genentech.png" data-caption="Genentech — Internship Highlight">View</button>
             </div>
           </div>
-          <span class="project-type">Internship</span>
-        </div>
 
-        <p class="project-desc">
-          Contributed to workflow improvements, stakeholder interviews, and pilot rollout planning for process optimization.
-        </p>
-
-        <div class="project-badges">
-          <span class="badge">System Optimization</span>
-          <span class="badge">CapEx & OpEx</span>
-        </div>
-
-        <div class="project-actions">
-          <button class="btn-primary" type="button" data-full="genentech.png" data-caption="Genentech — Internship Highlight">View Highlight</button>
-          <a class="btn-secondary" href="#hero">Back to Top</a>
-        </div>
-
-        <p class="project-note">Focused on product requirements, interviews, and pilot validation.</p>
-      </div>
-    </article>
-
-    <article class="project-feature fox" aria-labelledby="proj-fox">
-      <div class="project-visual placeholder-visual">
-        <div class="placeholder-card">
-          <span>FOX</span>
-          <small>Product internship</small>
-        </div>
-      </div>
-
-      <div class="project-content">
-        <div class="project-topline">
-          <div class="project-brand">
-            <div class="project-logo">
-              <img src="fox.png" alt="FOX logo">
+          <div class="subproject-card featured-small">
+            <div class="subproject-head">
+              <div>
+                <strong>FOX</strong>
+                <small>AI-supported ad insights and dashboard reporting.</small>
+              </div>
+              <span class="subproject-pill">AI</span>
             </div>
-            <div>
-              <h3 id="proj-fox">FOX Internship Experience</h3>
-              <p class="project-subtitle">AI advertising + dashboard work</p>
+            <div class="subproject-tags">
+              <span class="mini-tag">Reporting</span>
+              <span class="mini-tag">Dashboards</span>
+            </div>
+            <div class="subproject-actions">
+              <button class="btn-primary" type="button" data-full="fox.png" data-caption="FOX — Internship Highlight">View</button>
             </div>
           </div>
-          <span class="project-type">Internship</span>
+
+          <div class="subproject-card">
+            <div class="subproject-head">
+              <div>
+                <strong>Cross-team Learnings</strong>
+                <small>Building stronger product judgment through both roles.</small>
+              </div>
+              <span class="subproject-pill">Growth</span>
+            </div>
+            <div class="subproject-tags">
+              <span class="mini-tag">Stakeholders</span>
+              <span class="mini-tag">Execution</span>
+            </div>
+            <div class="subproject-actions">
+              <a class="btn-secondary" href="#seen">Recognition</a>
+            </div>
+          </div>
         </div>
-
-        <p class="project-desc">
-          Worked on AI-supported ad placement insights and reporting tools to improve visibility into performance.
-        </p>
-
-        <div class="project-badges">
-          <span class="badge">AI Ad Revenue</span>
-          <span class="badge">Financial Dashboard</span>
-        </div>
-
-        <div class="project-actions">
-          <button class="btn-primary" type="button" data-full="fox.png" data-caption="FOX — Internship Highlight">View Highlight</button>
-          <a class="btn-secondary" href="#seen">Recognition</a>
-        </div>
-
-        <p class="project-note">Featured for contributions in model-driven media optimization.</p>
       </div>
     </article>
 
