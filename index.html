@@ -577,12 +577,26 @@
     grid-template-columns: 1fr;
   }
 
-  .project-group.brallium .project-body {
+  .project-group.brallium .project-body.full {
     padding: 0;
+    width: 100%;
+  }
+
+  .project-group.brallium .project-desc {
+    max-width: none;
+  }
+
+  .project-group.brallium .project-actions {
+    width: 100%;
+  }
+
+  .project-group.brallium .project-note {
+    max-width: none;
   }
 
   .traction-block {
-    margin: 14px 0 20px;
+    margin: 14px 0 18px;
+    width: 100%;
   }
 
   .traction-label {
@@ -597,21 +611,23 @@
   .traction-logos {
     display: flex;
     align-items: center;
-    gap: 28px;
+    justify-content: space-between;
+    gap: 18px;
     flex-wrap: wrap;
+    width: 100%;
   }
 
   .traction-logo {
     display: flex;
     align-items: center;
     justify-content: center;
-    opacity: .78;
-    transition: opacity .2s ease, transform .2s ease, filter .2s ease;
+    opacity: 1;
+    transition: none;
   }
 
   .traction-logo:hover {
+    transform: none;
     opacity: 1;
-    transform: translateY(-2px);
   }
 
   .traction-logo img {
@@ -619,14 +635,65 @@
     width: auto;
     object-fit: contain;
     display: block;
-    filter: grayscale(100%);
+    filter: none;
   }
 
   .traction-logo:hover img {
-    filter: grayscale(0%);
+    filter: none;
   }
 
-  @media (max-width: 980px) {
+  .media-highlight {
+    margin: 6px 0 18px;
+    width: 100%;
+  }
+
+  .media-link {
+    display: grid;
+    grid-template-columns: 180px 1fr;
+    gap: 16px;
+    align-items: center;
+    text-decoration: none;
+    color: inherit;
+    width: 100%;
+    padding: 16px 0;
+    border-top: 1px solid rgba(0,0,0,.06);
+    border-bottom: 1px solid rgba(0,0,0,.06);
+  }
+
+  .media-link:hover .media-copy strong {
+    text-decoration: underline;
+  }
+
+  .media-screenshot {
+    width: 180px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 14px;
+    display: block;
+    border: 1px solid rgba(0,0,0,.06);
+    box-shadow: 0 10px 24px rgba(33,18,8,.06);
+  }
+
+  .media-copy {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    min-width: 0;
+  }
+
+  .media-copy strong {
+    font-size: 15px;
+    font-weight: 900;
+    line-height: 1.2;
+  }
+
+  .media-copy span {
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--muted);
+  }
+
+@media (max-width: 980px) {
     .project-main {
       grid-template-columns: 1fr;
     }
@@ -669,6 +736,17 @@
 
     .traction-logo img {
       height: 22px;
+    }
+
+    .media-link {
+      grid-template-columns: 1fr;
+      gap: 10px;
+    }
+
+    .media-screenshot {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 3 / 2;
     }
   }
 
@@ -831,7 +909,7 @@
     <!-- BRALLIUM -->
     <article class="project-group brallium" aria-labelledby="proj-brallium">
       <div class="project-main">
-        <div class="project-body">
+        <div class="project-body full">
           <div class="project-topline">
             <div class="project-brand">
               <div class="project-logo">
@@ -846,7 +924,7 @@
           </div>
 
           <p class="project-desc">
-            Patented biomaterial wearables recognized by NSF and featured by Shoptalk, with additional visibility through LABEST and Bold Journey.
+            Patented biomaterial wearables recognized by NSF, Shoptalk, and LABEST.
           </p>
 
           <div class="traction-block">
@@ -861,10 +939,17 @@
               <div class="traction-logo">
                 <img src="assets/spotlight/LABest logo.jpeg" alt="LABEST">
               </div>
-              <div class="traction-logo">
-                <img src="assets/spotlight/bold journey.jpeg" alt="Bold Journey">
-              </div>
             </div>
+          </div>
+
+          <div class="media-highlight">
+            <a class="media-link" href="https://www.linkedin.com/posts/bella-yuyu_bellasideabank-ecommerce-product-ugcPost-7400979785365086209-UGtS/?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEKwQy0B-SH_2NNZMfzz0DFOLK1_ofxIkR4" target="_blank" rel="noopener noreferrer">
+              <img class="media-screenshot" src="assets/spotlight/linkedin_ai_media_screenshot.png" alt="LinkedIn screenshot of AI in Media Posts">
+              <div class="media-copy">
+                <strong>AI in Media Posts</strong>
+                <span>LinkedIn screenshot · 1306 impressions · Featured on INSPO</span>
+              </div>
+            </a>
           </div>
 
           <div class="project-actions">
@@ -873,71 +958,6 @@
           </div>
 
           <p class="project-note">Prototype recognized with dermatologist certificates and green certificates.</p>
-        </div>
-      </div>
-
-      <div class="subprojects">
-        <div class="subprojects-header">
-          <h4>Sub-projects</h4>
-          <span>Retail Tech Tools I Built Along</span>
-        </div>
-
-        <div class="subproject-grid">
-          <div class="subproject-card">
-            <a class="subproject-link" href="https://www.linkedin.com/posts/bella-yuyu_bellasideabank-ecommerce-product-ugcPost-7400979785365086209-UGtS/?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEKwQy0B-SH_2NNZMfzz0DFOLK1_ofxIkR4" target="_blank" rel="noopener noreferrer">
-              <div class="subproject-head">
-                <div>
-                  <strong>AI in Media Posts</strong>
-                  <small>Memified your product with the latest trend.</small>
-                </div>
-                <span class="subproject-pill">Brand</span>
-              </div>
-
-              <div class="subproject-tags">
-                <span class="mini-tag">1306 Impressions</span>
-                <span class="mini-tag">Featured on INSPO (tech forum wih 96K followers)</span>
-              </div>
-            </a>
-
-            <div class="subproject-actions">
-              <a class="btn-secondary" href="https://www.linkedin.com/posts/YOUR_LINK_HERE" target="_blank" rel="noopener noreferrer">View on LinkedIn</a>
-              <button class="btn-secondary" type="button" data-full="assets/spotlight/greencert.jpg" data-caption="Brallium — Green Certificate">Open Image</button>
-            </div>
-          </div>
-
-          <div class="subproject-card featured-small">
-            <div class="subproject-head">
-              <div>
-                <strong>Shark Tank Casting</strong>
-                <small>Media recognition and founder momentum.</small>
-              </div>
-              <span class="subproject-pill">Exposure</span>
-            </div>
-            <div class="subproject-tags">
-              <span class="mini-tag">Casting</span>
-              <span class="mini-tag">Validation</span>
-            </div>
-            <div class="subproject-actions">
-              <button class="btn-primary" type="button" data-full="assets/spotlight/shark tank.png" data-caption="Brallium — Shark Tank Casting">View</button>
-            </div>
-          </div>
-
-          <div class="subproject-card">
-            <div class="subproject-head">
-              <div>
-                <strong>Brand Launch</strong>
-                <small>Early customer-facing positioning and launch story.</small>
-              </div>
-              <span class="subproject-pill">Launch</span>
-            </div>
-            <div class="subproject-tags">
-              <span class="mini-tag">Go-to-market</span>
-              <span class="mini-tag">Startup</span>
-            </div>
-            <div class="subproject-actions">
-              <a class="btn-secondary" href="https://www.brallium.com" target="_blank" rel="noopener noreferrer">Visit</a>
-            </div>
-          </div>
         </div>
       </div>
     </article>
