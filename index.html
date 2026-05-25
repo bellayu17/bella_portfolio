@@ -200,7 +200,7 @@
 
   /* ---------- Featured Projects ---------- */
   .featured {
-    max-width: 1180px;
+    max-width: 1020px;
     margin: 90px auto;
     padding: 44px 20px;
   }
@@ -234,7 +234,7 @@
     position: relative;
     overflow: hidden;
     border-radius: 28px;
-    padding: 22px;
+    padding: 18px;
     background:
       linear-gradient(180deg, rgba(255,255,255,.92), rgba(255,255,255,.82));
     border: 1px solid rgba(0,0,0,.06);
@@ -254,18 +254,21 @@
     pointer-events: none;
   }
 
-  .project-group.brallium {
-    border-left: 7px solid var(--accent1);
+  .project-group.clientloop .project-main,
+  .project-group.internship .project-main {
+    grid-template-columns: 1fr;
   }
-
-  .project-group.clientloop {
-    border-left: 7px solid rgba(53,122,56,.88);
+  
+  .project-group.clientloop .project-media,
+  .project-group.internship .project-media {
+    display: none;
   }
-
-  .project-group.internship {
-    border-left: 7px solid rgba(224,168,74,.88);
+  
+  .project-group.clientloop .project-body,
+  .project-group.internship .project-body {
+    padding: 0;
   }
-
+  
   .project-main {
     position: relative;
     z-index: 1;
@@ -981,208 +984,231 @@
 
     <!-- CLIENTLOOP -->
     <article class="project-group clientloop" aria-labelledby="proj-clientloop">
-      <div class="project-main">
-        <div class="project-media">
-          <img src="assets/spotlight/google1.png" alt="ClientLoop app preview" loading="lazy">
+  <div class="project-main">
+    <div class="project-body full">
+      <div class="project-topline">
+        <div class="project-brand">
+          <div class="project-logo">
+            <img src="assets/spotlight/logo.jpg" alt="ClientLoop logo">
+          </div>
+          <div>
+            <h3 id="proj-clientloop">ClientLoop</h3>
+            <p class="project-subtitle">B2B SaaS AI agent</p>
+          </div>
         </div>
+        <span class="project-type">Product</span>
+      </div>
 
-        <div class="project-body">
-          <div class="project-topline">
-            <div class="project-brand">
-              <div class="project-logo">
-                <img src="assets/spotlight/logo.jpg" alt="ClientLoop logo">
-              </div>
-              <div>
-                <h3 id="proj-clientloop">ClientLoop</h3>
-                <p class="project-subtitle">B2B SaaS AI agent</p>
-              </div>
-            </div>
-            <span class="project-type">Product</span>
+      <p class="project-desc">
+        Designed and iterated on a SaaS workflow product that moved from NSF I-Corps validation to a live release.
+      </p>
+
+      <div class="project-badges">
+        <span class="badge">NSF I-Corps</span>
+        <span class="badge">Apple Approved</span>
+        <span class="badge">AI Agent</span>
+      </div>
+
+      <div class="media-highlight">
+        <a class="media-link" href="assets/spotlight/nsf.png" target="_blank" rel="noopener noreferrer">
+          <img class="media-screenshot" src="assets/spotlight/nsf.png" alt="ClientLoop NSF I-Corps screenshot">
+          <div class="media-copy">
+            <strong>NSF I-Corps Validation</strong>
+            <span>Interviews and market discovery for product-market fit.</span>
           </div>
-
-          <p class="project-desc">
-            Designed and iterated on a SaaS workflow product that moved from NSF I-Corps validation to a live release.
-          </p>
-
-          <div class="project-badges">
-            <span class="badge">NSF I-Corps</span>
-            <span class="badge">Apple Approved</span>
-            <span class="badge">AI Agent</span>
+        </a>
+        <a class="media-link" href="assets/spotlight/google1.png" target="_blank" rel="noopener noreferrer">
+          <img class="media-screenshot" src="assets/spotlight/google1.png" alt="ClientLoop app preview screenshot">
+          <div class="media-copy">
+            <strong>App UI Iteration</strong>
+            <span>Improved screens and flow clarity across the product experience.</span>
           </div>
+        </a>
+      </div>
 
-          <div class="project-actions">
-            <button class="btn-primary" type="button" data-full="assets/spotlight/nsf.png" data-caption="ClientLoop — NSF I-Corps">Open Demo</button>
-            <button class="btn-secondary" type="button" data-full="assets/spotlight/google1.png" data-caption="ClientLoop — App Preview">See Screens</button>
+      <div class="project-actions">
+        <button class="btn-primary" type="button" data-full="assets/spotlight/nsf.png" data-caption="ClientLoop — NSF I-Corps">Open Demo</button>
+        <button class="btn-secondary" type="button" data-full="assets/spotlight/google1.png" data-caption="ClientLoop — App Preview">See Screens</button>
+      </div>
+
+      <p class="project-note">Led user research, iteration, and reliability work to support production readiness.</p>
+    </div>
+  </div>
+
+  <div class="subprojects">
+    <div class="subprojects-header">
+      <h4>Sub-projects</h4>
+      <span>Research, release, and UI work</span>
+    </div>
+
+    <div class="subproject-grid">
+      <div class="subproject-card featured-small">
+        <div class="subproject-head">
+          <div>
+            <strong>NSF I-Corps Validation</strong>
+            <small>Interviews and market discovery for product-market fit.</small>
           </div>
-
-          <p class="project-note">Led user research, iteration, and reliability work to support production readiness.</p>
+          <span class="subproject-pill">Research</span>
+        </div>
+        <div class="subproject-tags">
+          <span class="mini-tag">Validation</span>
+          <span class="mini-tag">Discovery</span>
+        </div>
+        <div class="subproject-actions">
+          <button class="btn-primary" type="button" data-full="assets/spotlight/nsf.png" data-caption="ClientLoop — NSF I-Corps">View</button>
         </div>
       </div>
 
-      <div class="subprojects">
-        <div class="subprojects-header">
-          <h4>Sub-projects</h4>
-          <span>Research, release, and UI work</span>
+      <div class="subproject-card">
+        <div class="subproject-head">
+          <div>
+            <strong>App UI Iteration</strong>
+            <small>Improved screens and flow clarity across the product experience.</small>
+          </div>
+          <span class="subproject-pill">UI</span>
         </div>
-
-        <div class="subproject-grid">
-          <div class="subproject-card featured-small">
-            <div class="subproject-head">
-              <div>
-                <strong>NSF I-Corps Validation</strong>
-                <small>Interviews and market discovery for product-market fit.</small>
-              </div>
-              <span class="subproject-pill">Research</span>
-            </div>
-            <div class="subproject-tags">
-              <span class="mini-tag">Validation</span>
-              <span class="mini-tag">Discovery</span>
-            </div>
-            <div class="subproject-actions">
-              <button class="btn-primary" type="button" data-full="assets/spotlight/nsf.png" data-caption="ClientLoop — NSF I-Corps">View</button>
-            </div>
-          </div>
-
-          <div class="subproject-card">
-            <div class="subproject-head">
-              <div>
-                <strong>App UI Iteration</strong>
-                <small>Improved screens and flow clarity across the product experience.</small>
-              </div>
-              <span class="subproject-pill">UI</span>
-            </div>
-            <div class="subproject-tags">
-              <span class="mini-tag">Design</span>
-              <span class="mini-tag">Workflow</span>
-            </div>
-            <div class="subproject-actions">
-              <button class="btn-secondary" type="button" data-full="assets/spotlight/google1.png" data-caption="ClientLoop — App Preview">Open</button>
-            </div>
-          </div>
-
-          <div class="subproject-card">
-            <div class="subproject-head">
-              <div>
-                <strong>Release Readiness</strong>
-                <small>Polish and reliability work before launch.</small>
-              </div>
-              <span class="subproject-pill">Launch</span>
-            </div>
-            <div class="subproject-tags">
-              <span class="mini-tag">QA</span>
-              <span class="mini-tag">Stability</span>
-            </div>
-            <div class="subproject-actions">
-              <a class="btn-secondary" href="#hero">Back to Top</a>
-            </div>
-          </div>
+        <div class="subproject-tags">
+          <span class="mini-tag">Design</span>
+          <span class="mini-tag">Workflow</span>
+        </div>
+        <div class="subproject-actions">
+          <button class="btn-secondary" type="button" data-full="assets/spotlight/google1.png" data-caption="ClientLoop — App Preview">Open</button>
         </div>
       </div>
-    </article>
+
+      <div class="subproject-card">
+        <div class="subproject-head">
+          <div>
+            <strong>Release Readiness</strong>
+            <small>Polish and reliability work before launch.</small>
+          </div>
+          <span class="subproject-pill">Launch</span>
+        </div>
+        <div class="subproject-tags">
+          <span class="mini-tag">QA</span>
+          <span class="mini-tag">Stability</span>
+        </div>
+        <div class="subproject-actions">
+          <a class="btn-secondary" href="#hero">Back to Top</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</article>
 
     <!-- INTERNSHIPS -->
-    <article class="project-group internship" aria-labelledby="proj-internships">
-      <div class="project-main">
-        <div class="project-media">
-          <div class="placeholder-card" style="min-height:260px;">
-            <span>Internship Work</span>
-            <small>Genentech + FOX</small>
+   <article class="project-group internship" aria-labelledby="proj-internships">
+  <div class="project-main">
+    <div class="project-body full">
+      <div class="project-topline">
+        <div class="project-brand">
+          <div class="project-logo">
+            <img src="genentech.png" alt="Internship logos">
+          </div>
+          <div>
+            <h3 id="proj-internships">Internship Experience</h3>
+            <p class="project-subtitle">Product and analytics across two teams</p>
           </div>
         </div>
+        <span class="project-type">Experience</span>
+      </div>
 
-        <div class="project-body">
-          <div class="project-topline">
-            <div class="project-brand">
-              <div class="project-logo">
-                <img src="genentech.png" alt="Internship logos">
-              </div>
-              <div>
-                <h3 id="proj-internships">Internship Experience</h3>
-                <p class="project-subtitle">Product and analytics across two teams</p>
-              </div>
-            </div>
-            <span class="project-type">Experience</span>
+      <p class="project-desc">
+        Across Genentech and FOX, contributed to workflow improvements, interviews, reporting tools, and product strategy support.
+      </p>
+
+      <div class="project-badges">
+        <span class="badge">Process Optimization</span>
+        <span class="badge">Analytics</span>
+        <span class="badge">Product Strategy</span>
+      </div>
+
+      <div class="media-highlight">
+        <a class="media-link" href="genentech.png" target="_blank" rel="noopener noreferrer">
+          <img class="media-screenshot" src="genentech.png" alt="Genentech internship highlight">
+          <div class="media-copy">
+            <strong>Genentech</strong>
+            <span>Workflow optimization and stakeholder interviews.</span>
           </div>
-
-          <p class="project-desc">
-            Across Genentech and FOX, contributed to workflow improvements, interviews, reporting tools, and product strategy support.
-          </p>
-
-          <div class="project-badges">
-            <span class="badge">Process Optimization</span>
-            <span class="badge">Analytics</span>
-            <span class="badge">Product Strategy</span>
+        </a>
+        <a class="media-link" href="fox.png" target="_blank" rel="noopener noreferrer">
+          <img class="media-screenshot" src="fox.png" alt="FOX internship highlight">
+          <div class="media-copy">
+            <strong>FOX</strong>
+            <span>AI-supported ad insights and dashboard reporting.</span>
           </div>
+        </a>
+      </div>
 
-          <div class="project-actions">
-            <button class="btn-primary" type="button" data-full="genentech.png" data-caption="Genentech — Internship Highlight">Genentech</button>
-            <button class="btn-secondary" type="button" data-full="fox.png" data-caption="FOX — Internship Highlight">FOX</button>
+      <div class="project-actions">
+        <button class="btn-primary" type="button" data-full="genentech.png" data-caption="Genentech — Internship Highlight">Genentech</button>
+        <button class="btn-secondary" type="button" data-full="fox.png" data-caption="FOX — Internship Highlight">FOX</button>
+      </div>
+
+      <p class="project-note">Focused on user needs, execution quality, and measurable workflow improvements.</p>
+    </div>
+  </div>
+
+  <div class="subprojects">
+    <div class="subprojects-header">
+      <h4>Sub-projects</h4>
+      <span>Individual internship highlights</span>
+    </div>
+
+    <div class="subproject-grid">
+      <div class="subproject-card">
+        <div class="subproject-head">
+          <div>
+            <strong>Genentech</strong>
+            <small>Workflow optimization and stakeholder interviews.</small>
           </div>
-
-          <p class="project-note">Focused on user needs, execution quality, and measurable workflow improvements.</p>
+          <span class="subproject-pill">Ops</span>
+        </div>
+        <div class="subproject-tags">
+          <span class="mini-tag">Interviews</span>
+          <span class="mini-tag">Pilot rollout</span>
+        </div>
+        <div class="subproject-actions">
+          <button class="btn-secondary" type="button" data-full="genentech.png" data-caption="Genentech — Internship Highlight">View</button>
         </div>
       </div>
 
-      <div class="subprojects">
-        <div class="subprojects-header">
-          <h4>Sub-projects</h4>
-          <span>Individual internship highlights</span>
+      <div class="subproject-card featured-small">
+        <div class="subproject-head">
+          <div>
+            <strong>FOX</strong>
+            <small>AI-supported ad insights and dashboard reporting.</small>
+          </div>
+          <span class="subproject-pill">AI</span>
         </div>
-
-        <div class="subproject-grid">
-          <div class="subproject-card">
-            <div class="subproject-head">
-              <div>
-                <strong>Genentech</strong>
-                <small>Workflow optimization and stakeholder interviews.</small>
-              </div>
-              <span class="subproject-pill">Ops</span>
-            </div>
-            <div class="subproject-tags">
-              <span class="mini-tag">Interviews</span>
-              <span class="mini-tag">Pilot rollout</span>
-            </div>
-            <div class="subproject-actions">
-              <button class="btn-secondary" type="button" data-full="genentech.png" data-caption="Genentech — Internship Highlight">View</button>
-            </div>
-          </div>
-
-          <div class="subproject-card featured-small">
-            <div class="subproject-head">
-              <div>
-                <strong>FOX</strong>
-                <small>AI-supported ad insights and dashboard reporting.</small>
-              </div>
-              <span class="subproject-pill">AI</span>
-            </div>
-            <div class="subproject-tags">
-              <span class="mini-tag">Reporting</span>
-              <span class="mini-tag">Dashboards</span>
-            </div>
-            <div class="subproject-actions">
-              <button class="btn-primary" type="button" data-full="fox.png" data-caption="FOX — Internship Highlight">View</button>
-            </div>
-          </div>
-
-          <div class="subproject-card">
-            <div class="subproject-head">
-              <div>
-                <strong>Cross-team Learnings</strong>
-                <small>Building stronger product judgment through both roles.</small>
-              </div>
-              <span class="subproject-pill">Growth</span>
-            </div>
-            <div class="subproject-tags">
-              <span class="mini-tag">Stakeholders</span>
-              <span class="mini-tag">Execution</span>
-            </div>
-            <div class="subproject-actions">
-              <a class="btn-secondary" href="#seen">Recognition</a>
-            </div>
-          </div>
+        <div class="subproject-tags">
+          <span class="mini-tag">Reporting</span>
+          <span class="mini-tag">Dashboards</span>
+        </div>
+        <div class="subproject-actions">
+          <button class="btn-primary" type="button" data-full="fox.png" data-caption="FOX — Internship Highlight">View</button>
         </div>
       </div>
-    </article>
+
+      <div class="subproject-card">
+        <div class="subproject-head">
+          <div>
+            <strong>Cross-team Learnings</strong>
+            <small>Building stronger product judgment through both roles.</small>
+          </div>
+          <span class="subproject-pill">Growth</span>
+        </div>
+        <div class="subproject-tags">
+          <span class="mini-tag">Stakeholders</span>
+          <span class="mini-tag">Execution</span>
+        </div>
+        <div class="subproject-actions">
+          <a class="btn-secondary" href="#seen">Recognition</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</article>
 
   </div>
 </section>
