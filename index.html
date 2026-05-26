@@ -766,6 +766,23 @@
 
   .featured h2{font-size:28px;font-weight:800;margin-bottom:18px;text-align:left;}
 
+  .media-copy span {
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--muted);
+  display: block;
+  white-space: normal;
+}
+
+.internship .media-link {
+  cursor: default;
+  pointer-events: none;
+}
+
+.internship .media-link:hover .media-copy strong {
+  text-decoration: none;
+}
+  
   /* modal */
   .fp-modal{
     position:fixed;inset:0;display:none;align-items:center;justify-content:center;
@@ -1073,22 +1090,30 @@
       </div>
 
       <div class="media-highlight">
-        <a class="media-link" href="genentech.png" target="_blank" rel="noopener noreferrer">
+        <div class="media-link">
           <img class="media-screenshot" src="genentech.png" alt="Genentech internship highlight">
           <div class="media-copy">
             <strong>Genentech</strong>
-            <span>Workflow optimization and stakeholder interviews.</span>
+            <span>
+              Workflow optimization and stakeholder interviews.
+              Supported process improvements, aligned cross-functional feedback,
+              and helped turn research insights into actionable product decisions.
+            </span>
           </div>
-        </a>
-        <a class="media-link" href="fox.png" target="_blank" rel="noopener noreferrer">
+        </div>
+      
+        <div class="media-link">
           <img class="media-screenshot" src="fox.png" alt="FOX internship highlight">
           <div class="media-copy">
             <strong>FOX</strong>
-            <span>AI-supported ad insights and dashboard reporting.</span>
+            <span>
+              AI-supported ad insights and dashboard reporting.
+              Helped summarize performance trends, refine reporting workflows,
+              and communicate findings clearly for team use.
+            </span>
           </div>
-        </a>
+        </div>
       </div>
-
       <div class="project-actions">
         <button class="btn-primary" type="button" data-full="genentech.png" data-caption="Genentech — Internship Highlight">Genentech</button>
         <button class="btn-secondary" type="button" data-full="fox.png" data-caption="FOX — Internship Highlight">FOX</button>
