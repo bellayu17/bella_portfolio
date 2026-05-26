@@ -753,6 +753,14 @@
     }
   }
 
+  /* ClientLoop only: show full tall images */
+    .clientloop .media-screenshot--contain {
+      object-fit: contain;
+      object-position: center;
+      background: #fff;
+      height: 180px; /* increase if the images are still too cramped */
+    }
+
   .featured h2{font-size:28px;font-weight:800;margin-bottom:18px;text-align:left;}
 
   /* modal */
@@ -1010,21 +1018,22 @@
 
       <div class="media-highlight">
         <a class="media-link" href="assets/spotlight/nsf.png" target="_blank" rel="noopener noreferrer">
-          <img class="media-screenshot" src="assets/spotlight/nsf.png" alt="ClientLoop NSF I-Corps screenshot">
+          <img class="media-screenshot media-screenshot--contain" src="assets/spotlight/nsf.png" alt="ClientLoop NSF I-Corps screenshot">
           <div class="media-copy">
             <strong>NSF I-Corps Validation</strong>
             <span>Interviews and market discovery for product-market fit.</span>
           </div>
         </a>
+      
         <a class="media-link" href="assets/spotlight/google1.png" target="_blank" rel="noopener noreferrer">
-          <img class="media-screenshot" src="assets/spotlight/google1.png" alt="ClientLoop app preview screenshot">
+          <img class="media-screenshot media-screenshot--contain" src="assets/spotlight/google1.png" alt="ClientLoop app preview screenshot">
           <div class="media-copy">
             <strong>App UI Iteration</strong>
             <span>Improved screens and flow clarity across the product experience.</span>
           </div>
         </a>
       </div>
-
+      
       <div class="project-actions">
         <a class="btn-primary" href="https://youtu.be/PNIYIWLJOYs" target="_blank" rel="noopener noreferrer">Open Demo</a>
         <a class="btn-primary" href="https://apps.apple.com/ua/app/clientloop/id6743770516" target="_blank" rel="noopener noreferrer">View in App Store</a>
